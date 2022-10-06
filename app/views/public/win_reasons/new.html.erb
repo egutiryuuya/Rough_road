@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+     
+    </div>
+    
+    <div class="col-8">
+      <div class="row">
+        <div class="col-5">
+          <h3>勝てた要因を入力してください</h3>
+        </div>
+        <div class="col-5">
+          <% if @reasons.count==0 %>
+            登録記録がありません
+          <% else %>
+          
+          <% @reasons.each do |reason| %>
+          <%= reason.reason %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          
+            <%= form_with model: [@game_score,@win_reason], method: :post do |f|%>
+              <%= f.label :reason,"要因を追加する" %>
+              <%= f.text_field :reason%>
+            <%= f.submit "追加",class:"btn btn-outline-success" %>
+            <% end %>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

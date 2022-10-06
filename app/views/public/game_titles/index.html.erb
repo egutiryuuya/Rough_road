@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>タイトルを選んでください</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <% @game_titles.each do |game_title| %>
+      <%=link_to game_title_path(game_title) do %>
+      <%= image_tag game_title.image %>
+      <% end %>
+      <% end %>
+    </div>
+</div>

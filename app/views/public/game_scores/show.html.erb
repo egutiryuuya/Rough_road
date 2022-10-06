@@ -1,0 +1,7 @@
+<%=image_tag @game_title.image %>
+<%=@game_title.title %>
+
+<%= @customer.email %>
+<h3>勝敗登録</h3>
+<%=link_to "win!",class:"btn btn-outline-danger" %>
+<%= link_to "lose...",root_path,class:"btn btn-outline-success" %>

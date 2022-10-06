@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= image_tag @game_title.image,size:"200×200" %>
+      <%= @game_title.title %>
+    </div>
+    
+    <div class="col-8">
+      <div class="row">
+        <div class="col-5">
+          現在の勝率
+        </div>
+        <div class="col-5">
+          <% if @game_title.game_score.exists?(customer_id: current_customer.id) %>
+           <!--既に記録がある場合-->
+            <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,current_customer),class:"btn btn-outline-primary" %>
+          <% else %>
+          <!--まだ記録がない場合-->
+            <%= form_with model: [@game_title,@game_score] ,method: :post do |f| %>
+              <%= f.hidden_field :game_title_id, :value => @game_title.id %>
+              <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.submit "#{@game_title.title}の勝敗記録を始める",class:"btn btn-outline-success"%>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

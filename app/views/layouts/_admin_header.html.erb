@@ -1,0 +1,27 @@
+<nav class ="navbar navbar-expand-lg px-0 py-0 bg-dark">
+  <div class="collapse navbar-collapse">
+    <div class ="col-sm-4 col-lg-5">
+      <h1 class="outline-secondary my-1">
+        <%= link_to root_path do %>
+        a</h1>
+        <% end %>
+    </div>
+      
+    <div class ="col-sm-4 col-lg-2 bg-dark">
+      </div>
+        <nav class="nav-bar navbar-dart bg-dark text-light">
+          <ul class="navbar-nav my-3 d-md-flex justify-content-md-end">
+            <li class="nav-item mr-4">
+              <%=link_to "ユーザー一覧",root_path,class:"btn btn-sm btn-outline-light" %>
+            </li>
+            <li class="nav-item mr-4">
+              <%=link_to "タイトル一覧",admin_game_titles_path,class:"btn btn-sm btn-outline-light" %>
+            </li>
+            <li class="nav-item mr-4">
+            <%=link_to "ログアウト",destroy_admin_session_path,method: :delete,class:"btn btn-sm btn-outline-light" %>
+            </li>
+          </ul>
+        </nav>
+    </div>
+  </div>
+</nav>
