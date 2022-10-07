@@ -1,7 +1,12 @@
 <%=image_tag @game_title.image %>
 <%=@game_title.title %>
+<%= @game_score.id %>
 
 <%= @customer.email %>
 <h3>勝敗登録</h3>
-<%=link_to "win!",class:"btn btn-outline-danger" %>
+<%= form_with model: [@game_score,@reason],url:new_game_score_reason_path(@game_score),method: :get do |f| %>
+
+<%= f.hidden_field :status,:value => "win" %>
+<%= f.submit "Win!",class:"btn btn-outline-danger" %>
+<% end %>
 <%= link_to "lose...",root_path,class:"btn btn-outline-success" %>

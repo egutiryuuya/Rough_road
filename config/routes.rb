@@ -20,11 +20,13 @@ Rails.application.routes.draw do
   
   scope module: :public do 
    resources :game_titles do
-   resources :game_scores 
+   resources :game_scores,only:[:index,:show]
   end
- # 勝敗登録のURLネストから
+   resources :game_scores do
+   resources :reasons
+  end
+
  
-  end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
