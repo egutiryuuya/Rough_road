@@ -5,7 +5,6 @@ class Public::GameTitlesController < ApplicationController
   
   def show
     @game_title = GameTitle.find(params[:id])
-    
     @game_score = GameScore.new
     
   end

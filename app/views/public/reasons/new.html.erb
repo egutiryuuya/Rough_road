@@ -1,6 +1,10 @@
-<h3> 新規追加 </h3>
+<% @reasons.each do |reason| %>
+<%= reason.title %>
+<% end %>
+<h3> 新規追加はこちら </h3>
 <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
-  <%= f.hidden_field :status,:value => 0 %>
+  <%= f.hidden_field :status,:value =>"win" %>
+  <%= f.hidden_field :game_score_id,:value => @game_score.id %>
   <%= f.text_field :title %>
   <%=f.submit "追加する",class:"btn btn-outline-success" %>
 <% end %>
