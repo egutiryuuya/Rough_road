@@ -1,0 +1,15 @@
+<!--既出要因の追加-->
+<% @reasons.each do |reason| %>
+  <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
+    <%= f.hidden_field :status,:value =>"lose" %>
+    <%= f.hidden_field :title,:value =>reason.title %>
+    <%=f.submit reason.title,class:"btn btn-outline-success" %>
+  <% end %>
+<% end %>
+<h3> 新規追加はこちら </h3>
+<%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
+  <%= f.hidden_field :status,:value =>"lose" %>
+  <%= f.hidden_field :game_score_id,:value => @game_score.id %>
+  <%= f.text_field :title %>
+  <%=f.submit "追加する",class:"btn btn-outline-success" %>
+<% end %>

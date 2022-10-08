@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
    resources :game_scores do
    resources :reasons
+   get "/reasons/new/lose" =>"reasons#lose" ,as: "lose_reason"
   end
 
  

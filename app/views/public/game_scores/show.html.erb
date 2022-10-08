@@ -1,12 +1,13 @@
 <%=image_tag @game_title.image %>
 <%=@game_title.title %>
-<%= @game_score.id %>
 
-<%= @customer.email %>
 <h3>勝敗登録</h3>
-<%= form_with model: [@game_score,@reason],url:new_game_score_reason_path(@game_score),method: :get do |f| %>
+<%= link_to "Win!",new_game_score_reason_path(@game_score),class:"btn btn-outline-danger" %>
 
-<%= f.hidden_field :status,:value => "win" %>
-<%= f.submit "Win!",class:"btn btn-outline-danger" %>
-<% end %>
-<%= link_to "lose...",root_path,class:"btn btn-outline-success" %>
+<%= link_to "lose...",game_score_lose_reason_path(@game_score),class:"btn btn-outline-primary" %>
+
+<!--勝因グラフ-->
+<%= pie_chart Reason.where(status: 0,game_score_id: @game_score.id).group(:title).count %>
+
+<!--敗因グラフ-->
+<%= pie_chart Reason.where(status: 1,game_score_id: @game_score.id).group(:title).count %>
