@@ -8,7 +8,7 @@
     <div class="col">
       <% @game_titles.each do |game_title| %>
       <%=link_to game_title_path(game_title) do %>
-      <%= image_tag game_title.image %>
+      <%= image_tag game_title.get_game_title_image %>
       <% end %>
       <% end %>
     </div>

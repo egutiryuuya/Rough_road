@@ -1,15 +1,42 @@
-<!--既出要因の追加-->
-<% @reasons.each do |reason| %>
-  <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
-    <%= f.hidden_field :status,:value =>"lose" %>
-    <%= f.hidden_field :title,:value =>reason.title %>
-    <%=f.submit reason.title,class:"btn btn-outline-success" %>
-  <% end %>
-<% end %>
-<h3> 新規追加はこちら </h3>
-<%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
-  <%= f.hidden_field :status,:value =>"lose" %>
-  <%= f.hidden_field :game_score_id,:value => @game_score.id %>
-  <%= f.text_field :title %>
-  <%=f.submit "追加する",class:"btn btn-outline-success" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <table class="table">
+        <thead class="table table-dark">
+          <tr>
+            <th>敗因一覧</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tr>
+          <!--既出要因の追加-->
+          <td>
+            <% @reasons.each do |reason| %>
+            <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
+              <%= f.hidden_field :status,:value =>"lose" %>
+              <%= f.hidden_field :title,:value =>reason.title %>
+              <%= f.hidden_field :game_score_id,:value => @game_score.id %>
+              <%=f.submit reason.title,class:"btn btn-outline-success" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "削除",game_score_reason_path(reason.game_score_id,reason),data: {confirm: "この項目を削除するとグラフからも削除されます。本当に削除しますか？"},method: :delete,class:"btn btn-outline-danger" %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+   
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h3> 新規追加はこちら </h3>
+      <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
+        <%= f.hidden_field :status,:value =>"lose" %>
+        <%= f.hidden_field :game_score_id,:value => @game_score.id %>
+        <%= f.text_field :title %>
+        <%=f.submit "追加する",class:"btn btn-outline-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

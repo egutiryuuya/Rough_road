@@ -20,11 +20,11 @@ Rails.application.routes.draw do
   
   scope module: :public do 
    resources :game_titles do
-   resources :game_scores,only:[:index,:show,:create]
-  end
-   resources :game_scores do
-   resources :reasons
-   get "/reasons/new/lose" =>"reasons#lose" ,as: "lose_reason"
+    resources :game_scores,only:[:index,:show,:create]
+   end
+    resources :game_scores do
+    resources :reasons
+    get "/reasons/new/lose" =>"reasons#lose" ,as: "lose_reason"
   end
 
  

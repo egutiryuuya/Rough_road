@@ -1,13 +1,27 @@
-<%=image_tag @game_title.image %>
-<%=@game_title.title %>
-
-<h3>勝敗登録</h3>
-<%= link_to "Win!",new_game_score_reason_path(@game_score),class:"btn btn-outline-danger" %>
-
-<%= link_to "lose...",game_score_lose_reason_path(@game_score),class:"btn btn-outline-primary" %>
-
-<!--勝因グラフ-->
-<%= pie_chart Reason.where(status: 0,game_score_id: @game_score.id).group(:title).count %>
-
-<!--敗因グラフ-->
-<%= pie_chart Reason.where(status: 1,game_score_id: @game_score.id).group(:title).count %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%=image_tag @game_title.get_game_title_image %>
+      <%=@game_title.title %><br>
+      現在のあなたの勝率
+      <%=@game_score.winrate %>%
+      <h3>勝敗登録</h3>
+      <%= link_to "Win!",new_game_score_reason_path(@game_score),class:"btn btn-outline-danger" %>
+      <%= link_to "lose...",game_score_lose_reason_path(@game_score),class:"btn btn-outline-primary" %>
+    </div>
+    <div class="col-8 offset-1">
+      <!--勝因グラフ-->
+      <h3>勝因</h3>
+      <%= pie_chart Reason.where(status: 0,game_score_id: @game_score.id).group(:title).count %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-8 my-5 offset-1">
+      <!--敗因グラフ-->
+      <h3>敗因</h3>
+      <%= pie_chart Reason.where(status: 1,game_score_id: @game_score.id).group(:title).count %>
+    </div>
+</div>

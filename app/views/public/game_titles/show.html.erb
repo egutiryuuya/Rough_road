@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <%= image_tag @game_title.image,size:"200×200" %>
+      <%= image_tag @game_title.get_game_title_image %>
       <%= @game_title.title %>
     </div>
     
     <div class="col-8">
       <div class="row">
         <div class="col-5">
-          現在の勝率
+          現在のあなたの勝率<%= @game_score.winrate %>%
         </div>
         <div class="col-5">
+          <%= link_to "みんなの勝率を見る",root_path,class:"btn btn-outline-primary" %>
           <% if @game_title.game_scores.exists?(customer_id: current_customer.id) %>
            <!--既に記録がある場合-->
             <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,current_customer),class:"btn btn-outline-primary" %>

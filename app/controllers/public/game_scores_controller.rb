@@ -1,9 +1,11 @@
 class Public::GameScoresController < ApplicationController
   def show
-    @game_score= GameScore.find_by(game_title_id: params[:game_title_id],customer_id:current_customer)
-    @game_title = GameTitle.find(@game_score.game_title_id)
+    @game_score =  GameScore.find(params[:id])
+    @game_title = GameTitle.find(params[:game_title_id])
     @customer = @game_score.customer
     @reason = Reason.new
+    
+    
   end
   
   def create
