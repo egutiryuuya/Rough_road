@@ -1,5 +1,20 @@
 class ApplicationController < ActionController::Base
    before_action :configure_permitted_parameters, if: :devise_controller?
+   
+   protected
+
+  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+  def reject_user
+    @customer = Customer.find_by(name: params[:user][:name])
+    if @customer
+      if @customer.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_user_registration
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    end
+  end
 
   protected
   def configure_permitted_parameters

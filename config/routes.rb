@@ -21,12 +21,21 @@ Rails.application.routes.draw do
   
   scope module: :public do 
     resources :customers,only:[:edit,:update]
-   resources :game_titles do
-    resources :game_scores,only:[:index,:show,:create]
-   end
+    
+    # 退会確認画面
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+  
+    patch '/customers/:id/withdrawal' => 'customrs#withdrawal', as: 'withdrawal'
+    
+    resources :game_titles do
+     resources :game_scores,only:[:index,:show,:create]
+    end
     resources :game_scores do
-    resources :reasons
+     resources :reasons
     get "/reasons/new/lose" =>"reasons#lose" ,as: "lose_reason"
+    
+    
+  
   end
 
  
