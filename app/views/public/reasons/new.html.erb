@@ -20,6 +20,7 @@
           </td>
           <td>
             <%= link_to "削除",game_score_reason_path(reason.game_score_id,reason),method: :delete,data: {confirm: "この項目を削除するとグラフからも削除されます。本当に削除しますか？"},class:"btn btn-outline-danger" %>
+            <%= link_to "編集",edit_game_score_reason_path(reason.game_score_id,reason.id),class:"btn btn-outline-success"%>
           </td>
         </tr>
         <% end %>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  
  root to:"homes#top"
   get "home/about" =>"home#about"
+  
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
   
   
   devise_for :customers, controllers: {
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do 
+    resources :customers,only:[:edit,:update]
    resources :game_titles do
     resources :game_scores,only:[:index,:show,:create]
    end

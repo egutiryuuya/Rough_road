@@ -18,9 +18,20 @@ class Public::ReasonsController < ApplicationController
   end  
   
   def edit
+    @game_score = GameScore.find(params[:game_score_id])
+    @reason= Reason.find(params[:id])
   end
   
   def update
+    @reason = Reason.find(params[:id])
+    @reasons= Reason.where(title: @reason.title,status: @reason.status)
+    if @reasons.update(reason_params)
+       redirect_to game_title_game_score_path(game_title_id: @reason.game_score.game_title_id, id: @reason.game_score_id)
+    else
+      @game_score = GameScore.find(params[:game_score_id])
+    @reason= Reason.find(params[:id])
+    render :edit
+    end
   end
   
   def create

@@ -1,0 +1,6 @@
+<%= form_with model:[@game_score,@reason],url:game_score_reason_path(@game_score),method: :patch do |f| %>
+  <%= f.hidden_field :status,:value => @reason.status %>
+  <%= f.hidden_field :game_score_id,:value => @game_score.id %>
+  <%= f.text_field :title %>
+  <%=f.submit "更新する",class:"btn btn-outline-success" %>
+<% end %>

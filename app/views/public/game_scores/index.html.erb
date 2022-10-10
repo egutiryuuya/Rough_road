@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h3><%=@game_title.title %>を遊んでいるユーザー</h3>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>名前</th>
+            <th>勝率</th>
+            <th></th>
+          </tr>
+        </thead>
+      <% @game_scores.each do |game_score| %>
+        <tr>
+          <% if game_score.customer_id==current_customer.id %>
+          <% else %>
+          <td>
+            <%= game_score.customer.name %>
+          </td>
+          <td><%= game_score.winrate %>%</td>
+          <td>
+            <%= link_to "詳細を見る",game_title_game_score_path(game_score.game_title_id,game_score),class:"btn btn-outline-success" %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,8 @@
     <ul>
       <li><%= link_to "管理者ログイン",new_admin_session_path %></li>
       <li><%= link_to "ユーザーログイン",new_customer_session_path %></li>
-    </ul>
+      <li><%= link_to "ゲストログイン(閲覧用)",homes_guest_sign_in_path,method: :post %></li>
+    </ul>                                      
     </div>
   </div>
 </div>

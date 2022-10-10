@@ -8,13 +8,13 @@
     <div class="col-8">
       <div class="row">
         <div class="col-5">
-          現在のあなたの勝率<%= @game_score.winrate %>%
+          現在のあなたの勝率<%= @winrate.winrate %>%
         </div>
         <div class="col-5">
-          <%= link_to "みんなの勝率を見る",root_path,class:"btn btn-outline-primary" %>
+          <%= link_to "みんなの勝率を見る",game_title_game_scores_path(@game_title),class:"btn btn-outline-primary" %>
           <% if @game_title.game_scores.exists?(customer_id: current_customer.id) %>
            <!--既に記録がある場合-->
-            <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,current_customer),class:"btn btn-outline-primary" %>
+            <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,@winrate),class:"btn btn-outline-primary" %>
           <% else %>
           <!--まだ記録がない場合-->
             <%= form_with model: [@game_title,@game_score],url: game_title_game_scores_path(@game_title) ,method: :post do |f| %>

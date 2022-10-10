@@ -17,7 +17,7 @@
         </thead>
         <% @game_titles.each do |game_title| %>
         <tr>
-          <td><%= image_tag game_title.game_title_image%></td>
+          <td><%= image_tag game_title.get_game_title_image%></td>
           <td><%= game_title.title %></td>
           <td colspan="2">仮</td>
           <td>
