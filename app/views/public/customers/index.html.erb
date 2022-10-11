@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>名前</th>
+            <th>遊んでいるタイトル</th>
+            <th></th>
+          </tr>
+        </thead>
+      <% @customers.each do |customer| %>
+          <tr>
+            <td><%=customer.name%></td>
+            <td><%=customer.game_scores.count%>個</td>
+            <td><%=link_to "詳細を見る",customer_path(customer),class:"btn btn-outline-success" %></td>
+          </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

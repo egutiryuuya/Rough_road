@@ -1,4 +1,14 @@
 class Public::CustomersController < ApplicationController
+  
+  def index
+    @customers=Customer.where.not(id: current_customer.id ).where.not(name: "guest_user")
+  end
+
+  def show
+    @customer= Customer.find(params[:id])
+    @game_scores =@customer.game_scores
+  end
+    
   def edit 
     @customer = Customer.find(params[:id])
   end

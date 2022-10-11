@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
     has_many :game_scores
     
-  
+    has_many :favorites ,dependent: :destroy
       
          
   def active_for_authentication?

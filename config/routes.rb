@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do 
-    resources :customers,only:[:edit,:update]
+    resources :customers,only:[:edit,:update,:index,:show] do
+     resources :favorites,only:[:index]
+    end
+    
     
     # 退会確認画面
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
@@ -32,14 +35,10 @@ Rails.application.routes.draw do
     end
     resources :game_scores do
      resources :reasons
+     
+     resource :favorites,only:[:create,:destroy,:index]
     get "/reasons/new/lose" =>"reasons#lose" ,as: "lose_reason"
-    
-    
-  
+    end
   end
-
- 
-  end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

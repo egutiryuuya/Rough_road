@@ -60,3 +60,4 @@ gem 'pry-rails'
 gem 'pry-byebug', group: :development
 gem "chartkick"
 gem 'image_processing', '~> 1.2'
+gem "font-awesome-rails"

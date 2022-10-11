@@ -10,9 +10,20 @@
       <h3>勝敗登録</h3>
       <%= link_to "Win!",new_game_score_reason_path(@game_score),class:"btn btn-outline-danger" %>
       <%= link_to "lose...",game_score_lose_reason_path(@game_score),class:"btn btn-outline-primary" %>
+       ユーザー情報を編集する<br>
+      <%=link_to "編集",edit_customer_path(current_customer) %>
+      <% elsif @game_score.favorited_by?(current_customer) %>
+      <!--いいね機能-->
+        <%= link_to game_score_favorites_path(@game_score),method: :delete do %>
+          <i class="fa-solid fa-star"></i>
+        <% end %>
       <% else %>
-      <h3>参考にする！</h3>
+        <%= link_to game_score_favorites_path(@game_score),method: :post do %>
+          <i class="fa-regular fa-star"></i>
+        <% end %>
       <% end %>
+      
+      
     </div>
     <div class="col-8 offset-1">
       <!--勝因グラフ-->
@@ -23,8 +34,7 @@
   
   <div class="row">
     <div class="col-3">
-      ユーザー情報を編集する<br>
-      <%=link_to "編集",edit_customer_path(current_customer) %>
+     
     </div>
     <div class="col-8 my-5 offset-1">
       <!--敗因グラフ-->

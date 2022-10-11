@@ -1,0 +1,7 @@
+<h3><%=@customer.name %>さんが遊んでいるタイトル</h3><h6>※画像を押すと戦歴を見ることができます</h6>
+
+<% @game_scores.each do |game_score| %>
+  <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
+  <%= image_tag game_score.game_title.get_game_title_image %>
+  <% end %>
+<% end %>
