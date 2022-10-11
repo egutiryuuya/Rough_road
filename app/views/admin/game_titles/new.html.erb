@@ -7,19 +7,20 @@
   <div class="row">
     <div class="col-8 mx-auto">
       <%= form_with model: @game_title,url: admin_game_titles_path,method: :post do |f| %>
-        <table class="table-sm table">
+        <table class="table-sm table table-borderless">
           <tr>
-            <td><%= f.label :title,"タイトルを入力" %></td>
+            <td class="table-dark"><%= f.label :title,"タイトルを入力" %></td>
             <td><%=f.text_field :title %></td>
           </tr>
           <tr>
-            <td><%= f.label :name,"イメージ画像" %></td>
+            <td class="table-dark"><%= f.label :name,"イメージ画像" %></td>
             <td><%=f.file_field :image, accept: "image/*"%></td>
           </tr>
           <tr>
-            <td></td>
+            <td class="table-dark"></td>
             <td><%=f.submit "作成",class:"btn btn-outline-success" %></td>
           </tr>
+          
         </table>
       <% end %>
     </div>

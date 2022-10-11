@@ -1,7 +1,32 @@
-<h3><%=@customer.name %>さんが遊んでいるタイトル</h3><h6>※画像を押すと戦歴を見ることができます</h6>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <!--ユーザー詳細テンプレート-->
+    </div>
+    <div class="col-8">
+      <h3 class="mt-5"><%=@customer.name %>さんが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
+        <div class="d-flex">
+        <% @game_scores.each do |game_score| %>
+          <table class="col-2 pr-auto mr-auto pl-0 ml-0 d-flex justify-cotent-start">
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
+                    <%= image_tag game_score.game_title.get_game_title_image %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to game_score.game_title.title %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+    </div>
+  </div>
+</div>
 
-<% @game_scores.each do |game_score| %>
-  <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
-  <%= image_tag game_score.game_title.get_game_title_image %>
-  <% end %>
-<% end %>
+
+ 
