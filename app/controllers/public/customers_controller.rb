@@ -16,7 +16,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
-    redirect_to game_titles_path
+    redirect_to customer_path(@customer)
   end
   
   def withdrawal
@@ -32,6 +32,6 @@ class Public::CustomersController < ApplicationController
   end
   
   def customer_params
-    params.require(:customer).permit(:name,:profile)
+    params.require(:customer).permit(:name,:profile,:customer_image)
   end
 end

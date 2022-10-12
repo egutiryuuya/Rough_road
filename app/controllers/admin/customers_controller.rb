@@ -14,8 +14,7 @@ class Admin::CustomersController < ApplicationController
   else
     @customer=Customer.find(params[:id])
     render :edit
-  end
-
+  en
   end
 
 private

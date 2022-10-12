@@ -7,10 +7,11 @@ class Customer < ApplicationRecord
     has_one_attached :customer_image
     
     def get_customer_image
-      unless image.attached?
-        画像がありません
+      unless customer_image.attached?
+        file_path = Rails.root.join('app/assets/images/noimage.png')
+        customer_image.attach(io: File.open(file_path), filename: '218efd88e8e82a6843e43af00c39f00f',content_type: 'image/jpeg')
       end
-      image.variant(resize_to_limit: [200,200]).processed
+      customer_image.variant(resize_to_limit: [200,200]).processed
     end
       
          

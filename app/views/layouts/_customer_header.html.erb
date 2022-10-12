@@ -7,16 +7,17 @@
         <% end %>
     </div>
       
-    <div class ="col-sm-4 col-lg-2 bg-dark">
+    <div class ="col-sm-5 col-lg-1 bg-dark">
       </div>
         <nav class="nav-bar navbar-dart bg-dark text-light">
           <ul class="navbar-nav my-3 d-md-flex justify-content-md-end">
-             <li class="nav-item mr-3">
+            
+            <li class="nav-item mr-3">
               <%=link_to "マイページ",customer_path(current_customer),class:"btn btn-sm btn-outline-light" %>
             </li>
             
             <li class="nav-item mr-3">
-              <%=link_to "ユーザー一覧",customers_path,class:"btn btn-sm btn-outline-light" %>
+              <%=link_to "ユーザ一覧",customers_path,class:"btn btn-sm btn-outline-light" %>
             </li>
             
             <li class="nav-item mr-3">
@@ -24,7 +25,7 @@
             </li>
             
             <li class="nav-item mr-3">
-              <%=link_to "お気に入り一覧",customer_favorites_path(current_customer),class:"btn btn-sm btn-outline-light" %>
+              <%=link_to "お気に入り",customer_favorites_path(current_customer),class:"btn btn-sm btn-outline-light" %>
             </li>
             
             <li class="nav-item mr-3">

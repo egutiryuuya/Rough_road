@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ 
+ .nomal {
+　　width:20%;
+　　word-break: break-all;
+}
+
+
