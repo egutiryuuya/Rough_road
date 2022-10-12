@@ -1,23 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
-      <%= current_customer.name %>
-      <%= current_customer.profile %>
-      <%= current_customer.id %>
+    <div class="col-4">
+      <%= render "public/customers/profile",customer: @customer %>
     </div>
-    <div class="col-8 offset-1">
+    <div class="col-8 ">
       <h3>タイトルを選んでください</h3>
-    </div>
-    </div>
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-8">
-        <% @game_titles.each do |game_title| %>
+       <% @game_titles.each do |game_title| %>
         <%=link_to game_title_path(game_title) do %>
         <%= image_tag game_title.get_game_title_image %>
         <% end %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>

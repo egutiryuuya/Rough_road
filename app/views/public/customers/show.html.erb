@@ -28,7 +28,13 @@
     
     <!--タイトル欄-->
     <div class="col-8">
-      <h3 class="mt-5"><%=@customer.name %>さんが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
+      <h3 class="mt-5">
+        <% if @customer.id == current_customer.id %>
+          <h3>あなたが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
+        <% else %>
+          <%=@customer.name %>さんが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
+        <% end %>
+        
         <div class="d-flex">
         <% @game_scores.each do |game_score| %>
           <table class="col-2 pr-auto mr-auto pl-0 ml-0 d-flex justify-cotent-start">
@@ -42,7 +48,7 @@
               </tr>
               <tr>
                 <td>
-                  <%= link_to game_score.game_title.title %>
+                  <%= game_score.game_title.title %>
                 </td>
               </tr>
             </tbody>

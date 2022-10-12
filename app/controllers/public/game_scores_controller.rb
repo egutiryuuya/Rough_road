@@ -15,7 +15,7 @@ class Public::GameScoresController < ApplicationController
     @game_score= GameScore.new(score_params)
     @game_score.customer_id= current_customer.id
     if  @game_score.save
-      redirect_to game_title_game_score_path(@game_score.game_title_id,current_customer)
+      redirect_to game_title_game_score_path(@game_score.game_title_id,@game_score)
     end
   end
   

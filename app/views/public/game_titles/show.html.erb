@@ -1,18 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-4 mt-5">
       <%= image_tag @game_title.get_game_title_image %>
       <%= @game_title.title %>
+      <%=render "public/customers/profile", customer: @customer %>
     </div>
     
     <div class="col-8">
       <div class="row">
         <div class="col-5">
-          <% if current_customer.game_scores.count==0 %>
-          まだ記録がありません
-          <% else %>
-          現在のあなたの勝率<%= @winrate.winrate %>%
-          <% end %>
+         
         </div>
         <div class="col-5">
           <%= link_to "みんなの勝率を見る",game_title_game_scores_path(@game_title),class:"btn btn-outline-primary" %>
@@ -31,7 +28,6 @@
           <% end %>
         </div>
       </div>
-      
     </div>
   </div>
 </div>

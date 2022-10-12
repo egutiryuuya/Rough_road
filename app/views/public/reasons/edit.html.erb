@@ -1,6 +1,30 @@
-<%= form_with model:[@game_score,@reason],url:game_score_reason_path(@game_score),method: :patch do |f| %>
-  <%= f.hidden_field :status,:value => @reason.status %>
-  <%= f.hidden_field :game_score_id,:value => @game_score.id %>
-  <%= f.text_field :title %>
-  <%=f.submit "更新する",class:"btn btn-outline-success" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h3 class="my-5">更新ページ</h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-8 mx-auto mt-2">
+      <table class="table table-borderless">
+        <%= form_with model:[@game_score,@reason],url:game_score_reason_path(@game_score),method: :patch do |f| %>
+          <%= f.hidden_field :status,:value => @reason.status %>
+          <%= f.hidden_field :game_score_id,:value => @game_score.id %>
+        <tr>
+          <td class="table-dark">
+            項目
+          </td> 
+          <td>
+            <%= f.text_field :title %>
+          </td>
+        </tr> 
+          
+      </table>
+      <%=f.submit "更新する",class:"btn btn-outline-success" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+
