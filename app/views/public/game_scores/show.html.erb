@@ -1,10 +1,10 @@
 <div class="container">
+  <h3 class="mt-3"><%=@game_title.title %></h3>
   <div class="row mt-3">
     <div class="col-3">
       <%=image_tag @game_title.get_game_title_image %>
-      <h4><%=@game_title.title %></h4>
-      現在の<%=@game_score.customer.name %>さんの勝率
-      <%=@game_score.winrate %>%
+      <h5 style="text-align: center;">現在の勝率</h5>
+      <div class="" style="text-align: center;" ><h2><%=@game_score.winrate %>%</h2></div>
       
       <h3 class="mt-3" style="text-align: center;">勝敗登録をする</h3>
       <!--自分のスコアじゃない場合はいいねを表示-->
@@ -14,7 +14,14 @@
           <%= link_to "lose...",game_score_lose_reason_path(@game_score),class:"btn btn-outline-primary" %>
         </div>
         <div class="text-center mt-3">
-          <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary text-center" do %>
+          <table class="table table-borderless">
+            <th colspan="2" class="table-dark">ユーザー情報</th>
+            <tr>
+              <td>名前:</td>
+              <td style="text-align: center;"><%=@game_score.customer.name %></td>
+            </tr>
+          </table>
+          <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary text-center mb-5" do %>
             <i class="fa-solid fa-user-pen"></i>ユーザー情報編集
           <% end %>
         </div>

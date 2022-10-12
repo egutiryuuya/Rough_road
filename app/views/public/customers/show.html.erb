@@ -1,9 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-4">
       <!--ユーザー詳細テンプレート-->
+      <div class="text-center mt-5">
+        <table class="table table-borderless">
+          <th colspan="2" class="table-dark">ユーザー情報</th>
+          <tr>
+            <td>名前:</td>
+            <td style="text-align: center;"><%=@customer.name %></td>
+          </tr>
+          <tr>
+            <td>プロフィール</td>
+            <td><%=simple_format(@customer.profile) %></td>
+          </tr>
+        </table>
+        <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary text-center mb-5" do %>
+          <i class="fa-solid fa-user-pen"></i>ユーザー情報編集
+        <% end %>
+      </div>
     </div>
-    <div class="col-8">
+    <div class="col-7 offset-md-1">
       <h3 class="mt-5"><%=@customer.name %>さんが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
         <div class="d-flex">
         <% @game_scores.each do |game_score| %>
