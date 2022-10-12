@@ -1,8 +1,8 @@
 <div class="container">
   <h3 class="mt-3"><%=@customer.name %>さんの<%=@game_title.title %>の戦歴</h3>
   <div class="row mt-3">
-    <div class="col-3">
-      <%=image_tag @game_title.get_game_title_image %>
+    <div class="col-4">
+      <div class="text-center"><%=image_tag @game_title.get_game_title_image %></div>
       <h5 style="text-align: center;">現在の勝率</h5>
       <div class="" style="text-align: center;" ><h2><%=@game_score.winrate %>%</h2></div>
       
@@ -23,25 +23,8 @@
          いいねする</h6><i class="fa-regular fa-star"></i>
         <% end %>
       <% end %>
-      <div class="text-center mt-5">
-        <table class="table table-borderless">
-          <th colspan="2" class="table-dark">ユーザー情報</th>
-          <tr>
-            <td colspan="2"><%=image_tag @customer.get_customer_image %></td>
-          </tr>
-          <tr>
-            <td>名前</td>
-            <td style="text-align: center;"><%=@customer.name %></td>
-          </tr>
-          <tr>
-            <td>自己紹介</td>
-            <td class="nomal"><%= @customer.profile %></td>
-          </tr>
-        </table>
-        <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary text-center mb-5" do %>
-          <i class="fa-solid fa-user-pen"></i>ユーザー情報編集
-        <% end %>
-      </div>
+     
+     <%= render 'public/customers/profile', customer: @customer %>
     </div>
     
     <div class="col-4">
