@@ -35,7 +35,7 @@
   </div>
   
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-8 mx-auto">
       <h3> 新規追加はこちら </h3>
       <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
         <%= f.hidden_field :status,:value =>"win" %>

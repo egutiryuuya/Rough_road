@@ -1,6 +1,9 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+   devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+         
     has_many :game_scores
     has_many :favorites ,dependent: :destroy
     
@@ -13,11 +16,16 @@ class Customer < ApplicationRecord
       end
       customer_image.variant(resize_to_limit: [200,200]).processed
     end
+    
+    def self.looks(word)
+        @customer = Customer.where("name LIKE?","%#{word}%")
+    
+    end
+    
       
          
-  def active_for_authentication?
-    super && (is_deleted == false)
-  end
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    def active_for_authentication?
+      super && (is_deleted == false)
+    end
+ 
 end

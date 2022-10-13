@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h3 class="my-5">検索結果</h3>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-8 mx-auto mt-2">
+  <!--カスタマーで検索をかけた場合-->
+      <% if @range == "Customer" %>
+        <table class="table table-borderless">
+          <thead class="table-dark">
+            <th class="text-center">名前</th>
+            <th></th>
+            <th></th>
+          </thead>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td class="text-center">
+              <h4><%=customer.name %></h4>
+            </td>
+            <td><%=link_to "詳細",customer_path(customer),class:"btn btn-outline-success"%></td>
+          </tr>
+          <% end %>
+        </table>
+  <!--ゲームタイトルで検索をかけた場合-->
+      <% else %>
+        <table class="table table-borderless">
+          <thead class="table-dark">
+            <th class="text-center">タイトル</th>
+            <th class="text-center">遊んでいる人数</th>
+            <th></th>
+          </thead>
+          <% @game_titles.each do |game_title| %>
+          <tr>
+            <td>
+              <h4 class="text-center"><%=game_title.title %></h4>
+            </td>
+            <td class="text-center"><%=game_title.game_scores.count %></td>
+            <td class="text-center"><%= link_to "Let's play",game_title_path(game_title.id),class:"btn btn-outline-success"  %></td>
+            
+          </tr>
+          <% end %>
+        </table>
+      <% end %>
+        
+    </div>
+  </div>
+</div>

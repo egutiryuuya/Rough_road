@@ -6,6 +6,10 @@ class GameTitle < ApplicationRecord
     unless image.attached?
       画像がありません
     end
-    image.variant(resize_to_limit: [250, 250]).processed
+    image.variant(resize_to_limit: [200, 200]).processed
+  end
+  
+  def self.looks(word)
+    @game_titles = GameTitle.where("title LIKE?","%#{word}%")
   end
 end

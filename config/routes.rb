@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :customers,only:[:edit,:update,:index,:show] do
      resources :favorites,only:[:index]
     end
+    get "search" => "searches#search"
+    get "search/result" => "searches#search_result"
     
     
     # 退会確認画面
