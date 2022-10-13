@@ -1,33 +1,13 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-4">
       <div class="mt-5 col-12">
-        <table class="table table-borderless">
-          <th colspan="2" class="table-dark text-center">ユーザー情報</th>
-          <tr>
-            <th colspan="2" class="text-center"><%=image_tag @customer.get_customer_image %></td>
-          </tr>
-          <tr>
-            <td>名前:</td>
-            <td style="text-align: center;"><%=@customer.name %></td>
-          </tr>
-          <tr>
-            <td class="col-4">自己紹介:</td>
-            <td class="nomal"><%= @customer.profile %></td>
-          </tr>
-          <tr>
-            <td colspan="2" class="text-center">
-              <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary mb-5" do %>
-                <i class="fa-solid fa-user-pen"></i>ユーザー情報編集
-              <% end %>
-            </td>
-          </tr>
-        </table>
+        <%= render "public/customers/profile",customer: @customer %>
       </div>
     </div>
     
     <!--タイトル欄-->
-    <div class="col-8">
+    <div class="col-8 ">
       <h3 class="mt-5">
         <% if @customer.id == current_customer.id %>
           <h3>あなたが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
@@ -47,8 +27,8 @@
                 </td>
               </tr>
               <tr>
-                <td>
-                  <%= game_score.game_title.title %>
+                <td class="text-center">
+                  <h4><%= game_score.game_title.title %></h4>
                 </td>
               </tr>
             </tbody>

@@ -12,7 +12,7 @@
         <table class="table table-borderless">
           <thead class="table-dark">
             <th class="text-center">名前</th>
-            <th></th>
+            <th class="text-center">遊んでいるタイトル数</th>
             <th></th>
           </thead>
           <% @customers.each do |customer| %>
@@ -20,6 +20,7 @@
             <td class="text-center">
               <h4><%=customer.name %></h4>
             </td>
+            <td class="text-center"><%= customer.game_scores.count %></td>
             <td><%=link_to "詳細",customer_path(customer),class:"btn btn-outline-success"%></td>
           </tr>
           <% end %>

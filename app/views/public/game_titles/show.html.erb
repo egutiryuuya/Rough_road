@@ -1,33 +1,30 @@
-<div class="container">
-  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa修正
+<div class="container-fruid">
   <div class="row">
-    <div class="col-4 mt-5">
-      <%= image_tag @game_title.get_game_title_image %>
-      <%= @game_title.title %>
+    <div class="col-4 ">
       <%=render "public/customers/profile", customer: @customer %>
     </div>
-    
-    <div class="col-8">
-      <div class="row">
-        <div class="col-5">
-         
-        </div>
-        <div class="col-5">
-          <%= link_to "みんなの勝率を見る",game_title_game_scores_path(@game_title),class:"btn btn-outline-primary" %>
-          <% if @game_title.game_scores.exists?(customer_id: current_customer.id) %>
-          
-           <!--既に記録がある場合-->
-            <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,@winrate),class:"btn btn-outline-primary" %>
-          <% else %>
-          
-          <!--まだ記録がない場合-->
-            <%= form_with model: [@game_title,@game_score],url: game_title_game_scores_path(@game_title) ,method: :post do |f| %>
-              <%= f.hidden_field :game_title_id, :value => @game_title.id %>
-              <%= f.hidden_field :customer_id, :value => current_customer.id %>
-            <%= f.submit "#{@game_title.title}の勝敗記録を始める",class:"btn btn-outline-success"%>
-          <% end %>
-          <% end %>
-        </div>
+    <div class="col-4 text-center mt-5">
+      <h4 class="text-center"><%= @game_title.title %></h4>
+      <%= image_tag @game_title.image,size:"250x250" %>
+    </div>
+    <div class="col-4">
+      <div class="my-5">
+        <%= link_to "みんなの勝率を見る",game_title_game_scores_path(@game_title),class:"btn btn-outline-primary" %>
+        <% if @game_title.game_scores.exists?(customer_id: current_customer.id) %>
+      </div>
+      
+      <div class="mt-5">
+         <!--既に記録がある場合-->
+          <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,@winrate),class:"btn btn-outline-danger" %>
+      <% else %>
+      
+      <!--まだ記録がない場合-->
+        <%= form_with model: [@game_title,@game_score],url: game_title_game_scores_path(@game_title) ,method: :post do |f| %>
+          <%= f.hidden_field :game_title_id, :value => @game_title.id %>
+          <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <div class="mt-5"><%= f.submit "#{@game_title.title}の勝敗記録を始める",class:"btn btn-outline-danger"%></div>
+      <% end %>
+      <% end %>
       </div>
     </div>
   </div>

@@ -6,7 +6,7 @@ class GameTitle < ApplicationRecord
     unless image.attached?
       画像がありません
     end
-    image.variant(resize_to_limit: [200, 200]).processed
+    image.variant(resize_to_fill: [200, 200]).processed
   end
   
   def self.looks(word)

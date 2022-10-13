@@ -14,12 +14,12 @@ class Admin::CustomersController < ApplicationController
   else
     @customer=Customer.find(params[:id])
     render :edit
-  en
+  end
   end
 
-private
-  def customer_params
-    params.require(:customer).permit(:name,:profile,:email,:is_deleted)
-  end
+  private
+    def customer_params
+      params.require(:customer).permit(:name,:profile,:email,:is_deleted)
+    end
   
 end

@@ -1,6 +1,6 @@
 class Public::GameTitlesController < ApplicationController
   def index
-    @game_titles = GameTitle.all
+    @game_titles = GameTitle.includes(:game_scores)
     @customer = current_customer
   end
   

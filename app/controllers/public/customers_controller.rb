@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :correct_customer,only: [:edit]
   
   def index
     @customers=Customer.where.not(id: current_customer.id ).where.not(name: "guest_user")
@@ -15,8 +17,14 @@ class Public::CustomersController < ApplicationController
   
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
+  if  @customer.update(customer_params)
+     flash[:notice] ="更新に成功しました"
     redirect_to customer_path(@customer)
+  else
+    @customer = Customer.find(params[:id])
+    flash[:alert] = "更新に失敗しました"
+    render :edit
+  end
   end
   
   def withdrawal
@@ -30,6 +38,14 @@ class Public::CustomersController < ApplicationController
   
   def unsubscribe
   end
+  
+  def correct_customer
+        @customer= Customer.find(params[:id])
+    unless @customer.id == current_customer.id
+      redirect_to customer_path(current_customer)
+    end
+  end
+  
   
   def customer_params
     params.require(:customer).permit(:name,:profile,:customer_image)

@@ -13,9 +13,27 @@
       <td class="nomal"><%= customer.profile %></td>
     </tr>
     <tr>
+      <td class="col-4">フォロー数</td>
+      <td>
+        <%= link_to customer_followings_path(customer) do %>
+        <%= customer.followings.count %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-4">フォロワー数</td>
+      <td>
+        <%= link_to customer_followers_path(customer) do %>
+        <%= customer.followers.count %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
       <td colspan="2" class="text-center">
+        <% unless current_customer.name == "guest_user" %>
         <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary mb-5" do %>
           <i class="fa-solid fa-user-pen"></i>ユーザー情報編集
+        <% end %>
         <% end %>
       </td>
     </tr>
