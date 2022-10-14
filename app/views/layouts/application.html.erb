@@ -21,6 +21,9 @@
       <%= render "layouts/beforelogin_header" %> 
     <% end %>
     </header>
+    
+          <div class="text-success"><h5><%=flash[:notice] %></h5></div>
+          <div class="text-danger"><h5><%=flash[:alert] %></h5></div>
     <%= yield %>
   </body>
 </html>

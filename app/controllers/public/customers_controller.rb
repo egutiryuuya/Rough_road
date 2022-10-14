@@ -22,7 +22,7 @@ class Public::CustomersController < ApplicationController
     redirect_to customer_path(@customer)
   else
     @customer = Customer.find(params[:id])
-    flash[:alert] = "更新に失敗しました"
+    flash[:alert] = "その名前は既に使われている可能性があります。また、名前は1文字以上15文字以下プロフィールは50文字以下にしてください"
     render :edit
   end
   end

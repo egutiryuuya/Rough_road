@@ -37,15 +37,15 @@
       <%= render "public/customers/profile",customer: @customer %>
     </div>
     
-    <div class="col-4">
       <!--勝因グラフ-->
+    <div class="col-4">
       <h3 class="text-danger">Win!</h3>
        <h3><%=@game_score.reasons.where(status: 0).count %>勝</h3>
       <%= pie_chart Reason.where(status: 0,game_score_id: @game_score.id).group(:title).count %>
     </div>
   
-    <div class="col-4 ">
       <!--敗因グラフ-->
+    <div class="col-4 ">
       <h3 class="text-primary">Lose...</h3>
       <h3><%=@game_score.reasons.where(status: 1).count %>敗</h3>
       <%= pie_chart Reason.where(status: 1,game_score_id: @game_score.id).group(:title).count %>

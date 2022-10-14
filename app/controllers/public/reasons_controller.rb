@@ -1,11 +1,7 @@
 class Public::ReasonsController < ApplicationController
   before_action :authenticate_customer!
   before_action :correct_reason,only: [:edit,:new,:lose]
-  
-  def index
-  end
-  
-  
+
   def new
     @reason= Reason.new
     @game_score = GameScore.find(params[:game_score_id])
@@ -32,7 +28,7 @@ class Public::ReasonsController < ApplicationController
       flash[:notice] = "更新に成功しました。"
        redirect_to game_title_game_score_path(game_title_id: @reason.game_score.game_title_id, id: @reason.game_score_id)
     else
-      flash[:notice] = "更新に失敗しました。"
+      flash[:alert] = "更新に失敗しました。"
       @game_score = GameScore.find(params[:game_score_id])
     @reason= Reason.find(params[:id])
     render :edit
@@ -45,13 +41,15 @@ class Public::ReasonsController < ApplicationController
     flash[:notice] = "投稿に成功しました。"
     redirect_to game_title_game_score_path(game_title_id: @reason.game_score.game_title_id, id: @reason.game_score_id)
   else
-    flash[:notice] = "投稿に失敗しました。"
+    flash[:alert] = "投稿に失敗しました。"
     @game_score = GameScore.find(params[:game_score_id])
-    @reason= Reason.new
-    @reasons = Reason.where(status: "lose",game_score_id: @game_score.id).group(:title)
-    render :new
+  if @reason.status=="win"
+   redirect_to new_game_score_reason_path(@game_score)
+  else
+   redirect_to game_score_lose_reason_path(@game_score)
+  end
     
-    # 敗因でレンダーしても勝因に行ってしまう問題
+    
   end
   end
   
@@ -59,7 +57,7 @@ class Public::ReasonsController < ApplicationController
     @reason = Reason.find(params[:id])
     @reasons = Reason.where(title: @reason.title,status: @reason.status,game_score_id: @reason.game_score_id)
     @reasons.destroy_all
-    flach[:notice] = "削除に成功しました。"
+    flash[:notice] = "削除に成功しました。"
     redirect_to game_title_game_score_path(game_title_id: @reason.game_score.game_title_id, id: @reason.game_score_id)
   end
   

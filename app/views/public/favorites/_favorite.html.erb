@@ -1,0 +1,14 @@
+<div class="text-center">
+  <%= link_to game_score_favorites_path(game_score),method: :delete do %>
+    いいねを取り消す<i class="fa-solid fa-star text-warning"></i>
+  <% end %>
+</div>
+  <% else %>
+  <div class="text-center">
+    <%= link_to game_score_favorites_path(game_score),method: :post do %>
+     いいねする<i class="fa-regular fa-star"></i>
+    <% end %>
+  </div>
+  <% end %>
+  <%= render "public/customers/profile",customer: customer %>
+</div>

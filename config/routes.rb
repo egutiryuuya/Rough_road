@@ -40,7 +40,7 @@ Rails.application.routes.draw do
      resources :game_scores,only:[:index,:show,:create]
     end
     resources :game_scores do
-     resources :reasons
+     resources :reasons,except:[:index]
      
      resource :favorites,only:[:create,:destroy,:index]
     get "/reasons/new/lose" =>"reasons#lose" ,as: "lose_reason"
