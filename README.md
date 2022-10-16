@@ -40,3 +40,4 @@
 ## 使用素材
 - ゲームタイトルは管理者側で登録されたものを投稿し著作権フリーの画像を使わせていただいています
 - 画像や動画の投稿はできません
+- <a href="https://jp.freepik.com/free-vector/abstract-neon-lights-background-design_9694001.htm#query=game&position=12&from_view=keyword">著作者：pikisuperstar</a>／出典：Freepik
