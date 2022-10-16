@@ -63,6 +63,7 @@ gem 'image_processing', '~> 1.2'
 gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'kaminari'
 group :production do
   gem 'mysql2'
 end

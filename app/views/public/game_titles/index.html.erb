@@ -1,20 +1,24 @@
-<div class=" container-fluid">
+
+<!--ゲームタイトル一覧画面-->
+<div class=" container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-md-4 col-sm-12 mt-5">
+<!--ユーザー情報テンプレート-->
       <%= render "public/customers/profile",customer: @customer %>
     </div>
-    <div class="col-8 my-5 ">
+<!--ゲームタイトル一覧-->
+    <div class="col-md-8 col-sm-12 my-5 ">
       <h3>タイトルを選んでください</h3>
       <div class="row">
        <% @game_titles.each do |game_title| %>
-      
-        <div class="col-3 mx-3 mb-5">
+        <div class="col-md-3 col-sm-12 mx-4 mb-5">
           <%=link_to game_title_path(game_title) do%>
           <%= image_tag game_title.get_game_title_image %>
           <% end %>
           <h4 class="text-center"><%= game_title.title %></h4>
         </div>
         <% end %>
+        <span class="text-center"><%= paginate @articles %></span>
       </div> 
     </div>
   </div>

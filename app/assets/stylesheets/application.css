@@ -55,3 +55,24 @@
   text-align:center;
 }
 
+.profile{
+  background-color:#dcdcdc;
+  position:absolute;
+ 
+}
+
+.headline{
+  width: 100%;
+  position: relative
+}
+
+.right{
+  margin-left: 90%;
+}
+
+/**{background-color: #f7e6e6;*/
+/*opacity: 0.8;*/
+/*background-size: 4px 4px;*/
+/*background-image: repeating-linear-gradient(45deg, #4af745 0, #4af745 0.4px, #f7e6e6 0, #f7e6e6 50%);*/
+/*}*/
+

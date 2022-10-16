@@ -1,39 +1,33 @@
-<div class="container-fluid">
+<!--ユーザーの詳細ページ-->
+
+<div class="container">
   <div class="row">
-    <div class="col-4">
+    <div class="col-md-4 col-sm-12">
       <div class="mt-5 col-12">
         <%= render "public/customers/profile",customer: @customer %>
       </div>
     </div>
     
-    <!--タイトル欄-->
-    <div class="col-8 ">
+<!--ユーザーが遊んでいるタイトル一欄-->
+    <div class="col-md-8 col-sm-12 ">
       <h3 class="mt-5">
         <% if @customer.id == current_customer.id %>
           <h3>あなたが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
         <% else %>
           <%=@customer.name %>さんが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
         <% end %>
-        
-        <div class="d-flex">
-        <% @game_scores.each do |game_score| %>
-          <table class="col-2 pr-auto mr-auto pl-0 ml-0 d-flex justify-cotent-start">
-            <tbody>
-              <tr>
-                <td>
-                  <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
-                    <%= image_tag game_score.game_title.get_game_title_image %>
-                  <% end %>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <h4><%= game_score.game_title.title %></h4>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
+
+        <div class="row">
+          <% @game_scores.each do |game_score| %>
+            <div class="col-md-3 col-sm-12 mx-4 mb-5">
+              <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
+                <%= image_tag game_score.game_title.get_game_title_image %>
+              <% end %>
+            <h4 class="text-center"><%= game_score.game_title.title %></h4>
+        </div>      
+          <% end %>
+          <span class="text-center"><%= paginate @articles %></span>
+    
     </div>
   </div>
 </div>

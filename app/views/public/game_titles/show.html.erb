@@ -1,24 +1,30 @@
-<div class="container-fruid">
+<!--ゲームタイトル詳細ページ-->
+
+<%= link_to "ひとつ前の画面に戻る",:back,class:"btn btn-outline-secondary ml-2 mt-2" %>
+
+<!--ユーザー情報-->
+<div class="container">
   <div class="row">
-    <div class="col-4 ">
+    <div class="col-md-4 sm-12 mt-5">
       <%=render "public/customers/profile", customer: @customer %>
     </div>
-    <div class="col-4 text-center mt-5">
+<!--選択したタイトル-->
+    <div class="col-md-4 sm-12 text-center mt-5">
       <h4 class="text-center"><%= @game_title.title %></h4>
       <%= image_tag @game_title.image,size:"250x250" %>
     </div>
-    <div class="col-4">
+    <div class="col-md-4 sm-12">
       <div class="my-5">
         <%= link_to "みんなの勝率を見る",game_title_game_scores_path(@game_title),class:"btn btn-outline-primary" %>
         <% if @game_title.game_scores.exists?(customer_id: current_customer.id) %>
       </div>
       
       <div class="mt-5">
-         <!--既に記録がある場合-->
+<!--既に記録がある場合-->
           <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,@winrate),class:"btn btn-outline-danger" %>
       <% else %>
       
-      <!--まだ記録がない場合-->
+<!--まだ記録がない場合-->
         <%= form_with model: [@game_title,@game_score],url: game_title_game_scores_path(@game_title) ,method: :post do |f| %>
           <%= f.hidden_field :game_title_id, :value => @game_title.id %>
           <%= f.hidden_field :customer_id, :value => current_customer.id %>
