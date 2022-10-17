@@ -1,3 +1,5 @@
+<%= link_to "ひとつ前に戻る",:back,class:"btn btn-outline-secondary ml-2" %>
+
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto my-5">
@@ -10,20 +12,20 @@
           
           <tr>
             <td class="table-dark pl-4">名前</td>
-            <td class="pl-3 form-control text">
-            <input type="text"  class="form-control">
-              <%= f.text_field :name %>
+            <td>
+              <%= f.text_field :name,autocomplete: "current_name",placeholder:"名前を入力してください",class:
+              "form-control"%>
             </td>
           </tr>
           <tr>
             <td class="table-dark pl-4">プロフィール</td>
-            <td class="pl-3">
-              <%= f.text_area :profile %>
+            <td>
+              <%= f.text_area :profile,autocomplete: "current_profile",placeholder:"プロフィールを入力してください",class:"form-control" %>
             </td>
           </tr>
           <tr>
             <td class="table-dark pl-4">アイコン画像</td>
-            <td class="pl-3">
+            <td>
               <%= f.file_field :customer_image %>
             </td>
           </tr>
@@ -33,6 +35,5 @@
          <%= link_to "退会する",unsubscribe_path(current_customer),class:"btn btn-outline-danger ml-5" %>
       <% end %>
       </div>  
-       
 </div>
 

@@ -7,27 +7,26 @@
         <%= render "public/shared/error_messages", resource: resource %>
         <table class="table table-borderless">
           <tr>
-            <td class="table-dark"><%= f.label :name %></td>
-            <td><%= f.text_field :name %></td>
+            <td class="table-dark">名前</td>
+            <td><%= f.text_field :name,placeholder:"名前を入力してください",class:"form-control" %></td>
           </tr>        
           
           <tr>
-            <td class="table-dark"><%= f.label :email %></td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            <td class="table-dark">メールアドレス</td>
+            <td><%= f.email_field :email, placeholder:"メールアドレスを入力してください",class:"form-control" %></td>
           </tr> 
           
           <tr>
             <td class="table-dark"><%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> 文字以上)</em>
-            <% end %><br /></td>
-            
-            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            <% end %><br/></td>
+            <td><%= f.password_field :password, placeholder:"パスワードを入力してください",class:"form-control"  %></td>
           </tr>
           
           <tr>
             <td class="table-dark"><%= f.label :password_confirmation %></td>
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            <td><%= f.password_field :password_confirmation, placeholder:"パスワードを入力してください",class:"form-control" %></td>
           </tr>
           
           <tr>
