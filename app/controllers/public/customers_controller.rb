@@ -13,7 +13,11 @@ class Public::CustomersController < ApplicationController
   end
     
   def edit 
-    @customer = Customer.find(params[:id])
+    if current_customer.name=="guest_user"
+      redirect_to game_titles_path
+    else
+      @customer = Customer.find(params[:id])
+    end
   end
   
   def update

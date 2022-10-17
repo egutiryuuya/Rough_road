@@ -2,7 +2,7 @@
 
 <%= link_to "ひとつ前の画面に戻る",:back,class:"btn btn-outline-secondary ml-2 mt-2 mr-5" %>
 
-<% unless @game_score.customer_id==current_customer.id %>
+<% if @game_score.customer_id !=current_customer.id && current_customer.name !="guest_user" %>
 <%= link_to "このゲームの記録を始める",game_title_path(@game_title),class:"btn btn-outline-success mt-2 ml-5 right" %>
 <% end %>
 

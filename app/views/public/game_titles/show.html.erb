@@ -16,10 +16,13 @@
     <div class="col-md-4 sm-12">
       <div class="my-5">
         <%= link_to "みんなの勝率を見る",game_title_game_scores_path(@game_title),class:"btn btn-outline-primary" %>
-        <% if @game_title.game_scores.exists?(customer_id: current_customer.id) %>
       </div>
       
+<!--ゲストの場合表示されない-->
+        <% if current_customer.name=="guest_user" %>
+        <% elsif @game_title.game_scores.exists?(customer_id: current_customer.id) %>
       <div class="mt-5">
+        
 <!--既に記録がある場合-->
           <%= link_to "#{@game_title.title}の勝敗記録をする",game_title_game_score_path(@game_title,@winrate),class:"btn btn-outline-danger" %>
       <% else %>

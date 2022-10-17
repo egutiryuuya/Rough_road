@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   
   namespace :admin do
    resources :game_titles
+   get "search" => "searches#search"
+   get "search/result"=>"searches#search_result"
   end
   
   scope module: :public do 

@@ -1,33 +1,46 @@
+<!--いいねした投稿一覧ページ-->
 <%= link_to "ひとつ前に戻る",:back,class:"btn btn-outline-secondary ml-2" %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-8 mx-auto mt-5">
-      <h3>お気に入り一覧</h3>
+<!--ゲストの場合は表示されない-->
+<% if current_customer.name =="guest_user" %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 mx-auto mt-5">
+        <h3 class="text-primary">会員登録をするとお気に入りができるようになります！</h3>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-8 mx-auto mt-5">
-      <table class="table">
-        <thead class="table-dark table-borderless">
-          <th>名前</th>
-          <th>タイトル</th>
-          <th>お気に入り数</th>
-          <th></th>
+  
+<% else %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 mx-auto mt-5">
+        <h3>お気に入り一覧</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-12 mx-auto mt-5">
+        <table class="table">
+          <thead class="table-dark table-borderless">
+            <th>名前</th>
+            <th>タイトル</th>
+            <th>お気に入り数</th>
+            <th></th>
+          </thead>
         </thead>
-      </thead>
-        <% @favorites.each do |favorite| %>
-          <tr>
-            <td><%=favorite.game_score.customer.name %></td>
-            <td><%=favorite.game_score.game_title.title %></td>
-            <td><%=favorite.game_score.favorites.count%></td>
-            <td><%= link_to "詳細を見る",game_title_game_score_path(favorite.game_score.game_title_id,favorite.game_score_id),class:"btn btn-outline-success" %></td>
-          </tr>
-        <% end %>
-          
-      </table>
+          <% @favorites.each do |favorite| %>
+            <tr>
+              <td><%=favorite.game_score.customer.name %></td>
+              <td><%=favorite.game_score.game_title.title %></td>
+              <td><%=favorite.game_score.favorites.count%></td>
+              <td><%= link_to "詳細を見る",game_title_game_score_path(favorite.game_score.game_title_id,favorite.game_score_id),class:"btn btn-outline-success" %></td>
+            </tr>
+          <% end %>
+            
+        </table>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 

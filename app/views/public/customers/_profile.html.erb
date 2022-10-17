@@ -8,6 +8,7 @@
       <td>名前:</td>
       <td style="text-align: center;"><h4><%=customer.name %></h4></td>
     </tr>
+  <% unless current_customer.name == "guest_user" %>
     <tr>
       <td class="col-4">自己紹介:</td>
       <td class="nomal"><%= customer.profile %></td>
@@ -37,5 +38,6 @@
         <% end %>
       </td>
     </tr>
+  <% end %>
   </table>
 </div>
