@@ -1,37 +1,86 @@
-<nav class ="navbar navbar-expand-lg px-0 py-0 bg-dark">
-  <div class="collapse navbar-collapse">
-    <div class ="col-3">
-      <a class="navbar-brand" href="/">
-        <%= image_tag 'Rough.png',size:"150x100"%>
-      </a>
-    </div>
-    <div class="col-4"><%= render "public/searches/searches" %></div>
+<!--<nav class ="navbar navbar-expand px-0 py-0 bg-dark">-->
+<!--  <div class="collapse navbar-collapse">-->
+<!--    <div class ="col-md-3 sm-6">-->
+<!--      <a class="navbar-brand" href="/">-->
+<!--        <%= image_tag 'Rough.png',size:"150x100"%>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--    <div class="col-md-4"><%= render "public/searches/searches" %></div>-->
       
-    <div class ="col-5 bg-dark">
-        <nav class="nav-bar navbar-dart bg-dark text-light">
-          <ul class="navbar-nav my-3 d-md-flex justify-content-md-end">
+<!--    <div class ="col-md-5 sm-6 bg-dark">-->
+<!--        <nav class="nav-bar navbar-dart bg-dark text-light">-->
+<!--          ようこそ<%= current_customer.name %>さん-->
+<!--          <ul class="navbar-nav my-3 d-md-flex justify-content-md-end">-->
             
-            <li class="nav-item mr-3">
-              <%=link_to "マイページ",customer_path(current_customer),class:"btn btn-sm btn-outline-light" %>
-            </li>
+<!--            <li class="nav-item mr-3">-->
+<!--              <%=link_to "マイページ",customer_path(current_customer),class:"btn btn-sm btn-outline-light" %>-->
+<!--            </li>-->
             
-            <li class="nav-item mr-3">
-              <%=link_to "お気に入り",customer_favorites_path(current_customer),class:"btn btn-sm btn-outline-light" %>
-            </li>
+<!--            <li class="nav-item mr-3">-->
+<!--              <%=link_to "お気に入り",customer_favorites_path(current_customer),class:"btn btn-sm btn-outline-light" %>-->
+<!--            </li>-->
             
-            <li class="nav-item mr-3">
-              <%=link_to "ユーザ一覧",customers_path,class:"btn btn-sm btn-outline-light" %>
-            </li>
+<!--            <li class="nav-item mr-3">-->
+<!--              <%=link_to "ユーザ一覧",customers_path,class:"btn btn-sm btn-outline-light" %>-->
+<!--            </li>-->
             
-            <li class="nav-item mr-3">
-              <%=link_to "タイトル一覧",game_titles_path,class:"btn btn-sm btn-outline-light" %>
-            </li>
+<!--            <li class="nav-item mr-3">-->
+<!--              <%=link_to "タイトル一覧",game_titles_path,class:"btn btn-sm btn-outline-light" %>-->
+<!--            </li>-->
             
-            <li class="nav-item mr-3">
-            <%=link_to "ログアウト",destroy_admin_session_path,method: :delete,class:"btn btn-sm btn-outline-light" %>
-            </li>
-          </ul>
-        </nav>
-    </div>
-  </div>
+<!--            <li class="nav-item mr-3">-->
+<!--            <%=link_to "ログアウト",destroy_admin_session_path,method: :delete,class:"btn btn-sm btn-outline-light" %>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+ <a class="navbar-brand" href="/">
+  <%= image_tag 'Rough.png',class: "logo-image", width: "150", height: "auto" %>
+ </a>
+
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+ </button>
+
+
+
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+ <% if customer_signed_in? %>
+
+  <ul class="navbar-nav ml-auto">
+
+   <li class="nav-item"><%= link_to "マイページ", customer_path(current_member.id), class: "mx-3 text-white" %></li>
+
+   <li class="nav-item"><%= link_to "タイトル一覧", categories_path, class: "mx-3 text-white" %></li>
+
+   <li class="nav-item"><%= link_to "お気に入り", new_post_path, class: "mx-3 text-white" %></li>
+
+   <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "mx-3 text-white" %></li>
+
+
+  </ul>
+
+ <% else %>
+
+  <ul class="navbar-nav ml-auto">
+
+   <li class="nav-item"><%= link_to "ログイン", new_member_session_path, class: "mx-3 text-white" %></li>
+
+   <li class="nav-item"><%= link_to "新規登録", new_member_registration_path, class: "mx-3 text-white" %></li>
+
+   <li class="nav-item"><%= link_to "アプリについて", home_about_path, class: "mx-3 text-white" %></li>
+
+  </ul>
+
+ <% end %>
+
+ </div>
+
 </nav>

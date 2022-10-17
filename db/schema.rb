@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 2022_10_13_050330) do
     t.datetime "remember_created_at"
     t.text "profile"
     t.string "name", null: false
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -98,13 +98,6 @@ ActiveRecord::Schema.define(version: 2022_10_13_050330) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "win_reasons", force: :cascade do |t|
-    t.string "reason"
-    t.integer "game_score_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

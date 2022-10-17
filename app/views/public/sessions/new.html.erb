@@ -6,52 +6,53 @@
       <table class="table table-borderless">
         <tr>
           <td class="table-dark" style="width:30%" >メールアドレス</td>
-          <td style="width:70%">
-            <div class="form-group">
-            <input type="email" class="form-control">
-            </div>
-          </td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
         <tr>
           <td class="table-dark" style="width:30%">パスワード</td>
-          <td style="width:70%">
-            <div class="form-group">
-              <label for="text">名前:</label>
-              <input type="text" id="text" class="form-control">
-            </div>
-          </td>
+          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
         
         <tr>
           <td class="table" style="width:30%"></td>
-          <td style="width:70%"><%= f.submit "Log in" %></td>
+          <td><%= f.submit "Log in" %></td>
         </tr>
       </table>
     <% end %>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-    </div>
-  </div>
-</div>
 
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-8 mx-auto mt-5">-->
+<!--      <h2>Log in</h2>-->
+<!--      <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
+<!--      <table class="table table-borderless">-->
+<!--        <tr>-->
+<!--          <td class="table-dark" style="width:30%" >メールアドレス</td>-->
+<!--          <td style="width:70%">-->
+<!--            <div class="form-group">-->
+<!--            <input type="email" name="customer[email]" class="form-control" placeholder="メールアドレスを入力してください">-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--          <td class="table-dark" style="width:30%">パスワード</td>-->
+<!--          <td style="width:70%">-->
+<!--            <div class="form-group">-->
+<!--              <input type="password" id="text" class="form-control" placeholder="パスワードを入力してください">-->
+<!--            </div>-->
+<!--          </td>-->
+<!--        </tr>-->
+        
+<!--        <tr>-->
+<!--          <td class="table" style="width:30%"></td>-->
+<!--          <td style="width:70%"><%#= f.submit "Log in" %></td>-->
+<!--          <button type="Log in" value="Log in" class="btn btn-success">Submit</button>-->
+<!--        </tr>-->
+<!--      </table>-->
+<!--    <%# end %>-->
+<!--  </div>-->
+<!--</div>-->
 
 

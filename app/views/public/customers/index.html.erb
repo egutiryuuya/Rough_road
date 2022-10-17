@@ -1,34 +1,35 @@
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-8 mx-auto">
+    <div class="col-md-8 sm-12 mx-auto">
       <h3 class="my-5">ユーザー一覧</h3>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 mx-auto">
-      <table class="table mt-2">
-        <thead class="table-dark">
-          <tr>
-            <th>名前</th>
-            <th>遊んでいるタイトル</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
+    <div class="col-md-8 sm-12 mx-auto">
+      
+          <div class="bg-dark py-3 text-left">
+            <span class="table-dark col-md-3 col-sm-5 mr-5">名前</span>
+            <span class="table-dark col-md-3 col-sm-5 ml-5">遊んでいるタイトル</span>
+          </div>
       <% @customers.each do |customer| %>
-          <tr>
-            <td><%=customer.name%></td>
-            <td><%=customer.game_scores.count%>個</td>
-            <td><%=link_to "詳細を見る",customer_path(customer),class:"btn btn-outline-success" %></td>
-            <td>
+          <div class="row d-flex flex-nowrap">
+            <div class="col-md-3 col-sm-4 my-1 d-flex"><%=customer.name%></div>
+            <div class="col-md-3 col-sm-4 my-1 d-flex"><%=customer.game_scores.count%>個</div>
+            
+            <span class="col-md-3 col-sm-6 my-1"><%=link_to "詳細を見る",customer_path(customer),class:"btn btn-outline-success" %></span>
+            
               <% if current_customer.following?(customer) %>
-                <%=  link_to "フォローをやめる",customer_relationship_path(customer.id,current_customer),method: :delete,class:"btn btn-outline-danger" %>
+                 <span class="col-md-3 col-sm-5 my-1"><%=  link_to "フォローをやめる",customer_relationship_path(customer.id,current_customer),method: :delete,class:"btn btn-outline-danger" %></span>
               <% else %>
-                <%= link_to "フォローする",customer_relationships_path(customer.id,current_customer),method: :post,class:"btn btn-outline-primary" %>
+                 <span class="col-md-3 col-sm-5 my-1"><%= link_to "フォローする",customer_relationships_path(customer.id,current_customer),method: :post,class:"btn btn-outline-primary" %></span>
               <% end %>
-            </td>
+            
           </tr>
+          </div>
       <% end %>
       </table>
     </div>
   </div>
 </div>
+
