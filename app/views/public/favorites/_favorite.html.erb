@@ -1,15 +1,14 @@
 <% if current_customer.name == "guest_user" %>
 <% elsif game_score.favorited_by?(current_customer) %>
 <div class="text-center ">
-  <%= link_to game_score_favorites_path(game_score),method: :delete,remote: true do %>
-    <span class="text-body">いいねを取り消す</span><i class="fa-solid fa-star text-warning"></i>
+  <%= link_to game_score_favorites_path(game_score),method: :delete,remote: true,class:"btn btn-outline-secondary text-white" do %>
+    <span class="text-body text-white">いいねを取り消す</span><i class="fa-solid fa-star text-warning "></i>
   <% end %>
 </div>
   <% else %>
 <div class="text-center ">
-  <%= link_to game_score_favorites_path(game_score),method: :post,remote: true do %>
-    <span class="text-body">いいねする</span><i class="fa-regular fa-star "></i>
+  <%= link_to game_score_favorites_path(game_score),method: :post,remote: true,class:"btn btn-outline-secondary text-white" do %>
+    <span class="text-body text-white">いいねする</span><i class="fa-regular fa-star "></i>
   <% end %>
 </div>
   <% end %>
-  

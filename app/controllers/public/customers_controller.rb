@@ -1,9 +1,11 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :correct_customer,only: [:edit]
+  before_action :correct_customer,only: [:edit,:update]
   
   def index
-    @customers=Customer.where.not(id: current_customer.id ).where.not(name: "guest_user")
+    customers = Customer.all
+    @customers=customers.where.not(id: current_customer.id ).where.not(name: "guest_user")
+    @articles=@customers.page(params[:page])
   end
 
   def show
@@ -13,6 +15,7 @@ class Public::CustomersController < ApplicationController
   end
     
   def edit 
+    @customer = Customer.find(params[:id])
     if current_customer.name=="guest_user"
       redirect_to game_titles_path
     else

@@ -30,10 +30,12 @@
         
        
       
-      <!--いいね機能-->
-      <div id="favorite_btn_<%= @game_score.id %>">
-        <%= render 'public/favorites/favorite',game_score: @game_score %>
-      </div>
+      <!--いいね機能自分のスコア以外に表示-->
+      <% unless @game_score.customer_id==current_customer.id %>
+        <div id="favorite_btn_<%= @game_score.id %>">
+          <%= render 'public/favorites/favorite',game_score: @game_score %>
+        </div>
+      <% end %>
       <div class="mt-5">
         <%= render "public/customers/profile",customer: @customer %>
       </div>

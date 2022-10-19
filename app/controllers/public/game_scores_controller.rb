@@ -1,4 +1,6 @@
 class Public::GameScoresController < ApplicationController
+  before_action :authenticate_customer!
+  
   def show
     @game_score =  GameScore.find(params[:id])
     @game_title = GameTitle.find(params[:game_title_id])

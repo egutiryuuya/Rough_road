@@ -43,7 +43,7 @@
 
  
 .position-parent{
-  background-image: url("image/42.jpg");
+  background-image: image-url("42.jpg");
   position:relative;
   background-image:contain;
   width:100%;
@@ -70,6 +70,13 @@
 .right{
   margin-left: 90%;
 }
+
+.title-shadow{
+  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+
+
 
 /**{background-color: #f7e6e6;*/
 /*opacity: 0.8;*/

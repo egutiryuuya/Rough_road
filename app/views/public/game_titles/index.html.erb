@@ -8,14 +8,16 @@
     </div>
 <!--ゲームタイトル一覧-->
     <div class="col-md-8 col-sm-12 my-5 ">
-      <h3>タイトルを選んでください</h3>
+      <h3 class="ml-5">タイトルを選んでください</h3>
       <div class="row">
        <% @game_titles.each do |game_title| %>
-        <div class="col-md-3 col-sm-12 mx-4 mb-5">
-          <%=link_to game_title_path(game_title) do%>
-          <%= image_tag game_title.get_game_title_image %>
-          <% end %>
-          <h4 class="text-center"><%= game_title.title %></h4>
+        <div class="title-shadow mx-auto mt-3">
+          <div class="col-md-6 col-sm-12 mb-5 pt-2 mb-5">
+            <%=link_to game_title_path(game_title) do%>
+            <%= image_tag game_title.get_game_title_image %>
+            <% end %>
+            <h4 class="text-center"><%= game_title.title %></h4>
+          </div>
         </div>
         <% end %>
         <span class="text-center"><%= paginate @articles %></span>

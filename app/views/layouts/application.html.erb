@@ -17,7 +17,7 @@
 
   <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
 
      <a class="navbar-brand" href="/">
       <%= image_tag 'Rough.png',class: "logo-image", width: "150", height: "100" %>
@@ -39,6 +39,7 @@
      <% if admin_signed_in? %>
        <ul class="navbar-nav ml-auto">
          <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: "mx-3 my-1 btn btn-secondary" %></li>
+         <li class="nav-item"><%= link_to "タイトル追加", new_admin_game_title_path, class: "mx-3 my-1 btn btn-secondary" %></li>
          <li class="nav-item"><%= link_to "タイトル一覧", admin_game_titles_path, class: "mx-3 my-1 btn btn-secondary" %></li>
          <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "mx-3  my-1 btn btn-secondary" %></li>
        </ul>
@@ -63,8 +64,10 @@
       </div>
     </nav>
   </header>
+  <main>
       <div class="text-success"><h5><%=flash[:notice] %></h5></div>
       <div class="text-danger"><h5><%=flash[:alert] %></h5></div>
     <%= yield %>
+    </main>
   </body>
 </html>
