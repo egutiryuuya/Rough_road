@@ -1,7 +1,7 @@
 class Admin::GameTitlesController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @game_titles=GameTitle.all
+    @game_titles= GameTitle.all.page(params[:page]).per(6).order('created_at DESC')
   end
   
   def show

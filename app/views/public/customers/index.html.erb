@@ -1,4 +1,4 @@
-
+<!--会員側会員一覧画面-->
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-8 sm-12 mx-auto">
@@ -24,7 +24,6 @@
               <% else %>
                  <span class="col-md-3 col-sm-5 my-1"><%= link_to "フォローする",customer_relationships_path(customer.id,current_customer),method: :post,class:"btn btn-outline-primary" %></span>
               <% end %>
-            
           </tr>
           </div>
       <% end %>

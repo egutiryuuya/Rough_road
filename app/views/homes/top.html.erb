@@ -1,32 +1,26 @@
-
+<!--トップページ-->
   <div class="row">
      <div class="col-12 mx-auto">
       <div class="position-parent">
-        
         <p class ="text-light t-text">
           このサイトは、ゲームの上達のためのサイトです。<br>
           会員でない方も戦歴の閲覧はできますが、<br>
           投稿には会員登録が必要になります。
         </p>
-        
-        <div class="login mx-auto">
+      <div class="row position2 col-10 mx-auto text-center">
+        <div class="col-md-4  col-sm-12 my-3">
           <%= link_to "既にアカウントをお持ちの方はこちら",new_customer_session_path,class:"btn btn-success" %>
         </div>
-        <div class="session">
-          
+        <div class="col-md-4 col-sm-12 my-3">
           <%= link_to "新規登録はこちら",new_customer_registration_path,class:"btn btn-warning home" %>
         </div>
-        <div class="guest">
+        <div class="col-md-4 col-sm-12 my-3">
           <%= link_to "ゲストログインはこちら",homes_guest_sign_in_path,method: :post,class:"btn btn-secondary" %>
         </div>
+      </div> 
       </div>
+    </div>   
     </div>
   </div>
-  
-  
-  
-        
-        
-
 
  

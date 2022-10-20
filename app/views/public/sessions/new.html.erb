@@ -1,24 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 mx-auto mt-5">
-      <h2>Log in</h2>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <td class="table-dark" style="width:30%" >メールアドレス</td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"メールアドレスを入力してください",class:"form-control" %></td>
-        </tr>
-        <tr>
-          <td class="table-dark" style="width:30%">パスワード</td>
-          <td><%= f.password_field :password, autocomplete: "current-password",placeholder:"パスワードを入力してください",class:"form-control" %></td>
-        </tr>
-        
-        <tr>
-          <td class="table" style="width:30%"></td>
-          <td><%= f.submit "Log in" ,class:"btn btn-success"%></td>
-        </tr>
-      </table>
-    <% end %>
+<!--会員ログイン画面-->
+  <h2 class="ml-5">Log in</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-8 mx-auto mt-2">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="row mx-auto">
+            <div class="col-md-4 col-sm-4 mt-4">メールアドレス</div>
+            <div class="col-md-6 col-sm-8 mt-4"><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"メールアドレスを入力してください",class:"form-control" %></div>
+          </div>
+          
+          <div class="row mx-auto">
+            <div class="col-md-4 col-sm-4 mt-4">パスワード</div>
+            <div class="col-md-6 col-sm-8 mt-4"><%= f.password_field :password, autocomplete: "current-password",placeholder:"パスワードを入力してください",class:"form-control" %></div>
+          </div>
+          
+          <div>
+            <div class="row mx-auto"></div>
+            <div class="col-2 mt-4"><%= f.submit "Log in" ,class:"btn btn-success"%></td>
+          </div>
+        <% end %>
+      </div>
   </div>
 </div>
 

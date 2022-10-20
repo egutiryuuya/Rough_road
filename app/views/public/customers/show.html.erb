@@ -12,24 +12,31 @@
     <div class="col-md-8 col-sm-12 ">
       <h3 class="mt-5">
         <% if @customer.id == current_customer.id %>
-          <h3>あなたが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
+          <h3 class="text-center">あなたが遊んでいるタイトル<h6 class="mb-5 text-center">※画像を押すと戦歴を見ることができます</h6>
         <% else %>
           <%=@customer.name %>さんが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
         <% end %>
 
         <div class="row">
           <% @game_scores.each do |game_score| %>
-          <div class="title-shadow mx-auto mt-3">
-            <div class="col-md-6 col-sm-12 pt-2 mb-5">
+          <div class="border mx-auto mt-3">
+            <div class="col-sm-12 pt-2 mb-5">
               <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
                 <%= image_tag game_score.game_title.get_game_title_image %>
               <% end %>
-            <h4 class="text-center"><%= game_score.game_title.title %></h4>
+            <h5><%= game_score.game_title.title %></h4>
+            </div>
           </div>
-        </div>      
           <% end %>
-          <span class="text-center"><%= paginate @articles %></span>
-    
+        </div>     
+         <% if @customer.game_scores.count==0 %>
+            <h4 class="text-center mx-auto">まだタイトルがありません<br>右上のタイトル一覧ボタンを押して好きなタイトルを選びましょう！</h4>
+          <% elsif @customer.game_scores.count>6%>
+            <div class="row col-12 text-center d-flex justify-content-center">
+              <div class="col-8 col-sm-12 my-4"><%= paginate @game_scores ,theme: 'bootstrap-5'%></div>
+            </div>
+          <% end %>
+          
     </div>
   </div>
 </div>

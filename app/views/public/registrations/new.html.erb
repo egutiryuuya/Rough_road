@@ -1,44 +1,42 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 mx-auto mt-5">
-      <h2>新規登録</h2>
-      
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-        <table class="table table-borderless">
-          <tr>
-            <td class="table-dark">名前</td>
-            <td><%= f.text_field :name,placeholder:"名前を入力してください",class:"form-control" %></td>
-          </tr>        
-          
-          <tr>
-            <td class="table-dark">メールアドレス</td>
-            <td><%= f.email_field :email, placeholder:"メールアドレスを入力してください",class:"form-control" %></td>
-          </tr> 
-          
-          <tr>
-            <td class="table-dark"><%= f.label :password %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> 文字以上)</em>
-            <% end %><br/></td>
-            <td><%= f.password_field :password, placeholder:"パスワードを入力してください",class:"form-control"  %></td>
-          </tr>
-          
-          <tr>
-            <td class="table-dark"><%= f.label :password_confirmation %></td>
-            <td><%= f.password_field :password_confirmation, placeholder:"パスワードを入力してください",class:"form-control" %></td>
-          </tr>
-          
-          <tr>
-            <td class="table-dark"></td>
-            <td><%= f.submit "登録する",class:"btn btn-outline-success" %></td>
-          </tr>
-          
-        <% end %>
+<!--新規登録ページ-->
+<h2 class="ml-5">新規登録</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-8 mx-auto mt-2">
         
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+          <div class="row">
+            <div class="col-md-4 col-sm-4 mt-4">名前</div>
+            <div class="col-md-6 col-sm-8 mt-4"><%= f.text_field :name,placeholder:"名前を入力してください",class:"form-control" %></div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4 col-sm-4 mt-4">メールアドレス</div>
+            <div class="col-md-6 col-sm-8 mt-4"><%= f.email_field :email, placeholder:"メールアドレスを入力してください",class:"form-control" %></div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4 col-sm-4 mt-4"><%= f.label :パスワード %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
+              <% end %></div>
+            <div class="col-md-6 col-sm-8 mt-4"><%= f.password_field :password, placeholder:"パスワードを入力してください",class:"form-control"  %></div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4 col-sm-4 mt-4"><%= f.label :パスワード（確認用） %></div>
+            <div class="col-md-6 col-sm-8 mt-4"><%= f.password_field :password_confirmation, placeholder:"パスワードをもう一度入力してください",class:"form-control" %></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-sm-4 mt-4"><%= f.submit "登録する",class:"btn btn-outline-success" %></div>
+            <div class="col-md-4 col-sm-4 mt-4"><%= link_to "既に登録済みのかたはこちら",new_customer_session_path,class:"btn btn-outline-secondary" %></div>
+          </div>
         
-      </table>
-      <%= link_to "既に登録済みのかたはこちら",new_customer_session_path,class:"btn btn-secondary" %>
+          <% end %>
+          <div class="row">
+            <div class="col-4 mx-auto my-4"><%= paginate @game_titles ,theme: 'bootstrap-5'%></div>
+          </div>
+      </div>
     </div>
   </div>
-</div>

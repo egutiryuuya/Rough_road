@@ -10,8 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer= Customer.find(params[:id])
-    @game_scores =@customer.game_scores
-    @articles = GameTitle.page(params[:page]).per(6).order('created_at DESC')
+    @game_scores =@customer.game_scores.includes(:reasons).page(params[:page]).per(6).order('created_at DESC')
   end
     
   def edit 
