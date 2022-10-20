@@ -4,7 +4,7 @@ class GameTitle < ApplicationRecord
   
   def get_game_title_image
     unless image.attached?
-      画像がありません
+      "雅号がありません"
     end
     image.variant(resize_to_fill: [200, 200]).processed
   end
