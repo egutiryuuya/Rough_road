@@ -10,16 +10,13 @@
     <div class="col-md-8 col-sm-12 my-5 ">
       <h3 class="ml-5 mb-4">タイトルを選んでください</h3>
       <div class="row">
-      <% if @game_titles.blank? %>
-        aaaaaaaaa
-        <% else %>
+      <% if GameScore.count>0 %>
          <% @game_titles.each do |game_title| %>
           <div class=" border mb-3 mx-auto">
             <div class="col-sm-12 mb-5 pt-2">
               <%=link_to game_title_path(game_title) do%>
               <%= image_tag game_title.get_game_title_image %>
               <% end %>
-            
               <h5><%= game_title.title %></h5>
             </div>
           </div>
@@ -29,7 +26,8 @@
       
         <div class="row col-12 text-center d-flex justify-content-center">
           <div class="col-8 col-sm-12 my-4"><%= paginate @game_titles ,theme: 'bootstrap-5'%></div>
-        </div> 
+        </div>
+        <% else %>
       <% end %>
     </div>
   </div>
