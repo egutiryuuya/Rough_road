@@ -48,7 +48,7 @@
     
      <% elsif customer_signed_in? %>
       <ul class="navbar-nav1 ml-auto">
-    <h4>ようこそ<%= current_customer.name %>さん</h4>
+    <div class="header-text">ようこそ<%= current_customer.name %>さん</div>
         <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer.id), class: "mx-3 my-1 btn btn-secondary" %></li>
         <li class="nav-item"><%= link_to "タイトル一覧", game_titles_path, class: "mx-3 my-1 btn btn-secondary" %></li>
         <li class="nav-item"><%= link_to "お気に入り", customer_favorites_path(current_customer), class: "mx-3 my-1 btn btn-secondary" %></li>
