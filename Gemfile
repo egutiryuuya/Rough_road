@@ -63,9 +63,10 @@ gem 'image_processing', '~> 1.2'
 gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'dotenv-rails'
-
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
+gem 'rails-i18n', '~> 6.0'
+gem 'devise-i18n'
 group :production do
   gem 'mysql2'
 end

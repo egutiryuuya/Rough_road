@@ -12,9 +12,10 @@
             <th>名前</th>
             <th>勝率</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
-<!--勝率、名前、スコア詳細へのリンク-->
+<!--勝率、名前、スコア詳細、フォローへのリンク-->
       <% @game_scores.each do |game_score| %>
         <tr>
           <% if game_score.customer_id==current_customer.id %>
@@ -26,6 +27,13 @@
           <td>
             <%= link_to "詳細を見る",game_title_game_score_path(game_score.game_title_id,game_score),class:"btn btn-outline-success" %>
           </td>
+          <td>
+            <% if current_customer.following?(game_score.customer) %>
+              <%= link_to "フォロー外す",customer_relationship_path(game_score.customer_id,current_customer),class:"btn btn-outline-danger", method: :delete %>
+            <% else %>
+              <%= link_to "フォローする", customer_relationships_path(game_score.customer_id),class:"btn btn-outline-danger", method: :post %>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       <% end %>
@@ -33,3 +41,4 @@
     </div>
   </div>
 </div>
+           <%#= render "public/relationships/follow_list", customer: current_customer %>

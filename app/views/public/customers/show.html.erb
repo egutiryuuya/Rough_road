@@ -19,12 +19,12 @@
 
         <div class="row">
           <% @game_scores.each do |game_score| %>
-          <div class="border mx-auto mt-3">
-            <div class="col-sm-12 pt-2 mb-5">
+          <div class="border mx-auto mt-3 title-color">
+            <div class="col-sm-12 pt-2 mb-5 mx-auto ">
               <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
                 <%= image_tag game_score.game_title.get_game_title_image %>
               <% end %>
-            <h5><%= game_score.game_title.title %></h4>
+            <h4><%= game_score.game_title.title %></h4>
             </div>
           </div>
           <% end %>

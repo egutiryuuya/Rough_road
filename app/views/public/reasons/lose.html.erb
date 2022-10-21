@@ -17,7 +17,7 @@
   <div class="row justify-content-center flex-nowrap">
     <div class="col-md-4 col-sm-4 my-2">
       <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
-        <%= f.hidden_field :status,:value => "win" %>
+        <%= f.hidden_field :status,:value => "lose" %>
         <%= f.hidden_field :title,:value =>reason.title %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
         <%=f.submit reason.title,class:"btn btn-outline-success" %>
@@ -34,7 +34,7 @@
     <div class="col-8 mx-auto">
       <h3> 新規追加はこちら </h3>
       <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
-        <%= f.hidden_field :status,:value =>"win" %>
+        <%= f.hidden_field :status,:value =>"lose" %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
         <%= f.text_field :title %>
         <%=f.submit "追加する",class:"btn btn-outline-success" %>

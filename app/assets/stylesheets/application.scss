@@ -60,13 +60,24 @@ justify-content: center;
 }
 
 
+*{
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.title-color{
+  background-color: white;
+}
+
+.height{
+  padding-bottom: 25vw;
+}
+
+// main{background-color: #f7e6e6;
+//   max-height:  100%;
+//   opacity: 0.8;
+//   background-size: 4px 4px;
+//   background-image: repeating-linear-gradient(45deg, #4af745 0, #4af745 0.4px, #f7e6e6 0, #f7e6e6 50%);
+// }
 
 
-
-
-/**{background-color: #f7e6e6;*/
-/*opacity: 0.8;*/
-/*background-size: 4px 4px;*/
-/*background-image: repeating-linear-gradient(45deg, #4af745 0, #4af745 0.4px, #f7e6e6 0, #f7e6e6 50%);*/
-/*}*/
 

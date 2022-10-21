@@ -28,7 +28,6 @@ class Customer < ApplicationRecord
     
     def self.looks(word)
         @customer = Customer.where("name LIKE?","%#{word}%")
-    
     end
 
     def active_for_authentication?
