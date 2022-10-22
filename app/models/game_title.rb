@@ -1,5 +1,5 @@
 class GameTitle < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images
   has_many :game_scores ,dependent: :destroy
   
   def get_game_title_image

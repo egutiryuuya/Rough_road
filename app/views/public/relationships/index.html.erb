@@ -1,41 +1,31 @@
 <!--フォロー一覧ページ-->
-<%= link_to "ひとつ前の画面に戻る",:back,class:"btn btn-outline-secondary ml-2 mt-2 mr-5" %>
+<%= link_to "ひとつ前の画面に戻る",:back,class:"btn btn-outline-secondary ml-2 my-2 mr-5" %>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 sm-12 mx-auto mt-5">
-      <% if @customers.exists? %>
-          <table class="table">
-            <thead class="table-dark">
-              <tr>
-                <th>名前</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-        <% @customers.each do |customer| %>
-              <tr>
-                <td><h3><%= customer.name %></h3></td>
-                <td>フォロー数: <%= customer.followings.count %></td>
-                <td>フォロワー数: <%= customer.followers.count %></td>
-                <td><%= link_to "詳細を見る",customer_path(customer),class:"btn btn-outline-success" %></td>
-              </tr>
-            </tbody>
-            <% end %>
-          </table>
-        
-      <% else %>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-12 mx-auto">
-            <h3>まだユーザーはいません</h3>
-          </div>
+  <% if @customers.exists? %>
+  
+  <div class="row col-8 mx-auto">
+    <div class="col-12 bg-dark py-2 text-left text-white mb-2">名前</div>
+  </div>
+  
+  <%@customers.each do |customer| %>
+    <div class="row col-8 mx-auto my-2">
+      <div class="col-md-3 sm-3"><%= customer.name %></div>
+      <div class="col-md-3 sm-3">フォロー数: <%= customer.followings.count %></div>
+      <div class="col-md-3 sm-3">フォロワー数: <%= customer.followers.count %></div>
+      <div clasS="col-md-3 sm-3"><%= link_to "詳細を見る",customer_path(customer),class:"btn btn-outline-success" %></div>
+    </div>
+  <% end %>
+
+    <% else %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-12 mx-auto">
+          <h3>まだユーザーはいません</h3>
         </div>
       </div>
-        
-      <% end %>
+    </div>
+    <% end %>
     </div>
   </div>
 </div>
