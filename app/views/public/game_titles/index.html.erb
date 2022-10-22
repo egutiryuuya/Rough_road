@@ -14,8 +14,10 @@
          <% @game_titles.each do |game_title|%>
           <div class=" border mb-3 mx-auto title-color">
             <div class="col-sm-12 mb-5 pt-2 ">
-              <%=link_to game_title_path(game_title) do%>
+              <%=link_to game_title_path(game_title) do %>
+              <% if game_title.image.attached? %>
               <%= image_tag game_title.get_game_title_image %>
+              <% end %>
               <% end %>
               <h5><%= game_title.title %></h5>
             </div>

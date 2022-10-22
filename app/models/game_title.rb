@@ -3,10 +3,7 @@ class GameTitle < ApplicationRecord
   has_many :game_scores ,dependent: :destroy
   
   def get_game_title_image
-    unless image.attached?
-      "画像がありません"
-    end
-    image.variant(resize_to_fill: [200, 200]).processed
+      image.variant(resize_to_fill: [200, 200]).processed
   end
   
   def self.looks(word)
