@@ -1,6 +1,6 @@
 <!--選択したゲームタイトル遊んでいる人一覧ページ-->
 
-<%= link_to "ひとつ前の画面に戻る",:back,class:"btn btn-outline-secondary ml-2 mt-2" %>
+<%= link_to "戻る",game_title_path(@game_title),class:"btn btn-outline-secondary ml-2 mt-2" %>
 
 <div class="container">
   <div class="row">
@@ -28,9 +28,9 @@
             <%= link_to "詳細を見る",game_title_game_score_path(game_score.game_title_id,game_score),class:"btn btn-outline-success" %>
           </td>
           <td>
-            <% if current_customer.following?(game_score.customer) %>
+            <% if current_customer.following?(game_score.customer) && current_customer.name != "guest_user"%>
               <%= link_to "フォロー外す",customer_relationship_path(game_score.customer_id,current_customer),class:"btn btn-outline-danger", method: :delete %>
-            <% else %>
+            <% elsif current_customer.name != "guest_user" %>
               <%= link_to "フォローする", customer_relationships_path(game_score.customer_id),class:"btn btn-outline-danger", method: :post %>
             <% end %>
           </td>

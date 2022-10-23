@@ -1,4 +1,5 @@
 <!--トップページ-->
+<div class="container-fruid"></div>
   <div class="row">
      <div class="col-12 mx-auto">
       <div class="position-parent">
@@ -8,15 +9,23 @@
           投稿には会員登録が必要になります。
         </p>
       <div class="row position2 col-10 mx-auto text-center">
-        <div class="col-md-4  col-sm-12 my-3">
-          <%= link_to "既にアカウントをお持ちの方はこちら",new_customer_session_path,class:"btn btn-success" %>
-        </div>
-        <div class="col-md-4 col-sm-12 my-3">
-          <%= link_to "新規登録はこちら",new_customer_registration_path,class:"btn btn-warning home" %>
-        </div>
-        <div class="col-md-4 col-sm-12 my-3">
-          <%= link_to "ゲストログインはこちら",homes_guest_sign_in_path,method: :post,class:"btn btn-secondary" %>
-        </div>
+        <% if customer_signed_in? %>
+          <% if current_customer.name=="guest_user" %>
+            <div class="col-md-4 col-sm-12 my-3">
+              <%= link_to "新規登録はこちら",destroy_customer_session_path,method: :delete,class:"btn btn-warning home" %>
+            </div>
+          <% end %>
+        <% else %>
+            <div class="col-md-4  col-sm-12 my-3">
+              <%= link_to "既にアカウントをお持ちの方はこちら",new_customer_session_path,class:"btn btn-success" %>
+            </div>
+            <div class="col-md-4 col-sm-12 my-3">
+              <%= link_to "新規登録はこちら",new_customer_registration_path,class:"btn btn-warning home" %>
+            </div>
+            <div class="col-md-4 col-sm-12 my-3">
+              <%= link_to "ゲストログインはこちら",homes_guest_sign_in_path,method: :post,class:"btn btn-secondary" %>
+            </div>
+        <% end %>
       </div> 
       </div>
     </div>   

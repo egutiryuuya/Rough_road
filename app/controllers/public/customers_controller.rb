@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :correct_customer,only: [:edit,:update]
+  before_action :correct_customer,only: [:edit,:update,:unsubscribe]
   
   def index
     customers = Customer.all
@@ -28,9 +28,8 @@ class Public::CustomersController < ApplicationController
      flash[:notice] ="更新に成功しました"
     redirect_to customer_path(@customer)
   else
-    @customer = Customer.find(params[:id])
     flash[:alert] = "その名前は既に使われている可能性があります。また、名前は1文字以上15文字以下プロフィールは50文字以下にしてください"
-    render :edit
+    redirect_to edit_customer_path(@customer)
   end
   end
   

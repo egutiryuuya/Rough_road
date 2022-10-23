@@ -9,6 +9,5 @@ class Public::GameTitlesController < ApplicationController
     @game_score = GameScore.new
     @winrate = GameScore.find_by(game_title_id: @game_title.id,customer_id:current_customer)
     @customer =current_customer 
-    
   end
 end

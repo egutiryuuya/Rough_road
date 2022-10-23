@@ -14,6 +14,7 @@ class Admin::CustomersController < ApplicationController
     redirect_to admin_customers_path
   else
     @customer=Customer.find(params[:id])
+     flash[:alert] = "その名前は既に使われている可能性があります。また、名前は1文字以上15文字以下プロフィールは50文字以下にしてください"
     render :edit
   end
   end

@@ -6,6 +6,10 @@ class Public::SessionsController < Devise::SessionsController
     customer_path(current_customer.id)
   end
   
+  def after_sign_out_path_for(resource)
+    new_customer_registration_path
+  end
+  
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

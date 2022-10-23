@@ -1,10 +1,10 @@
 <!--勝因追加ページ-->
-<%= link_to "スコア画面に戻る",game_title_game_score_path(@game_score.game_title.id,@game_score),class:"btn btn-outline-secondary ml-3" %>
+<%= link_to "スコア画面に戻る",game_title_game_score_path(@game_score.game_title.id,@game_score),class:"btn btn-outline-secondary ml-2 mt-2" %>
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
       <h3 class="my-5">勝因一覧ページ</h3>
-      <h6>※1度追加したものは次回からボタンを押すだけで登録できます  </div>
+      <h6>※1度追加したものは次回から黄色のボタンを押すだけで登録できます  </div>
   </div>
   
   <div class="row">
@@ -19,24 +19,24 @@
         <%= f.hidden_field :status,:value => "win" %>
         <%= f.hidden_field :title,:value =>reason.title %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
-        <%=f.submit reason.title,class:"btn btn-outline-primary" %>
+        <%=f.submit reason.title,class:"btn btn-warning" %>
       <% end %>
     </div>
     <div class="col-md-4 col-sm-4  my-2">
-      <%= link_to "削除",game_score_reason_path(reason.game_score_id,reason),method: :delete,data: {confirm: "この項目を削除するとグラフからも削除されます。本当に削除しますか？"},class:"btn btn-outline-danger" %>
       <%= link_to "編集",edit_game_score_reason_path(reason.game_score_id,reason.id),class:"btn btn-outline-success"%>
+      <%= link_to "削除",game_score_reason_path(reason.game_score_id,reason),method: :delete,data: {confirm: "この項目を削除するとグラフからも削除されます。本当に削除しますか？"},class:"btn btn-outline-secondary" %>
     </div>
   </div>
     <% end %>
 
   <div class="row">
     <div class="col-8 mx-auto">
-      <h3> 新規追加はこちら</h3><h6>※文字以上20文字以内で登録してください</h6>
+      <h3> 新規追加はこちら</h3><h6>※1文字以上20文字以内で登録してください</h6>
       <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
         <%= f.hidden_field :status,:value =>"win" %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
         <%= f.text_field :title,class:"my-3" %>
-        <%=f.submit "追加する",class:"btn btn-outline-success my-3" %>
+        <%=f.submit "追加する",class:"btn btn-success my-3" %>
       <% end %>
     </div>
   </div>

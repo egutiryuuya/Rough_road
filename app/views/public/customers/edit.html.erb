@@ -1,39 +1,35 @@
 <!--会員情報編集画面-->
-<%= link_to "ひとつ前に戻る",:back,class:"btn btn-outline-secondary ml-2" %>
+<%= link_to "戻る",customer_path(current_customer.id),class:"btn btn-outline-secondary ml-2 mt-2" %>
 
 <div class="container">
   <div class="row">
-    <div class="col-8 mx-auto my-5">
+    <div class="col-8 mx-auto my-4">
       <h3><%= @customer.name %>さんの会員情報編集</h3>
     </div>
   </div>
     <%= form_with model: @customer,url: customer_path(@customer),method: :patch do |f| %>
       <div class="col-8 mx-auto">
-        <table class="col-8 table table-sm table-borderless">
-          
-          <tr>
-            <td class="table-dark pl-4">名前</td>
-            <td>
-              <%= f.text_field :name,autocomplete: "current_name",placeholder:"名前を入力してください",class:
-              "form-control"%>
-            </td>
-          </tr>
-          <tr>
-            <td class="table-dark pl-4">プロフィール</td>
-            <td>
+        
+          <div class="row mt-3">
+            <div class="table-dark col-md-4 my-auto text-center py-3">名前</div>
+            <div class="col-md-8 my-auto">
+              <%= f.text_field :name,autocomplete: "current_name",placeholder:"名前を入力してください",class:"form-control"%>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="table-dark col-md-4 text-center my-auto py-3">プロフィール</div>
+            <div class="col-md-8 my-auto">
               <%= f.text_area :profile,autocomplete: "current_profile",placeholder:"プロフィールを入力してください",class:"form-control" %>
-            </td>
-          </tr>
-          <tr>
-            <td class="table-dark pl-4">アイコン画像</td>
-            <td>
-              <%= f.file_field :customer_image %>
-            </td>
-          </tr>
-          
-        </table>  
-         <%= f.submit "送信",class:"btn btn-outline-success" %>
-         <%= link_to "退会する",unsubscribe_path(current_customer),class:"btn btn-outline-danger ml-5" %>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="table-dark col-md-4 text-center my-auto py-3">アイコン画像</div>
+            <div class="col-md-8 my-auto"><%= f.file_field :customer_image %></div>
+          </div>
+          <div class="row mt-3 mb-5">
+            <div class="col-md-4 col-sm-5"></div>
+            <div class="col-md-8 col-sm-5 d-flex justify-content-between"><%= f.submit "更新する",class:"btn btn-outline-success mt-3" %><%= link_to "退会する",unsubscribe_path(current_customer),class:"btn btn-outline-danger mt-3 text-right" %></div>
+         </div>
       <% end %>
       </div>  
 </div>

@@ -1,44 +1,42 @@
 <!--ユーザープロフィール画面テンプレート-->
-<div class="table-dark text-center headline p-2"><h4>ユーザー情報</h4></div>
-  <div class=" col-12 profile pt-3">
-    <table class="table table-borderless">
-      <tr>
-        <th colspan="4" class="text-center"><%=image_tag customer.get_customer_image %></td>
-      </tr>
-      <tr>
-        <td class="col-4">名前:</td>
-        <td><h4><%=customer.name %></h4></td>
-      </tr>
+<div class="bg-dark  text-white text-center headline p-2 col-12"><h4>ユーザー情報</h4></div>
+  <div class=" col-12 profile pt-3 mb-5 pb-3">
+      <div class="text-center">
+        <div><%=image_tag customer.get_customer_image %></div>
+      </div>
+      <div class= "row">
+        <div class="col-3">名前</div>
+        <div class="h5 col-8"><%=customer.name %></div>
+      </div>
     <% unless current_customer.name == "guest_user" %>
-      <tr>
-        <td class="col-4">自己紹介:</td>
-        <td class="nomal text-break"><%= customer.profile %></td>
-      </tr>
-      <tr>
-        <td class="col-4">フォロー数:</td>
-        <td>
+      <div class="row">
+        <div class="col-4">自己紹介</div>
+        <div class="text-break col-8 h5"><%= customer.profile %></div>
+      </div>
+      <div class="row">
+        <div class="col-6">フォロー数:</div>
+        <div class="col-3">
           <%= link_to customer_followings_path(customer) do %>
           <%= customer.followings.count %>
           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td class="col-6">フォロワー数:</td>
-        <td>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">フォロワー数:</div>
+        <div class="col-3">
           <%= link_to customer_followers_path(customer) do %>
           <%= customer.followers.count %>
           <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2" class="text-center">
-          <% unless current_customer.name == "guest_user" %>
-          <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary mb-5" do %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mx-auto">
+          <% unless current_customer.name == "guest_user" || customer.id !=current_customer.id%>
+          <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary my-3" do %>
             <i class="fa-solid fa-user-pen"></i>ユーザー情報編集
           <% end %>
           <% end %>
-        </td>
-      </tr>
+        </div>
+      </div>
     <% end %>
-    </table>
-</div>
+  </div>

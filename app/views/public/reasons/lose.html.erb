@@ -1,10 +1,10 @@
 <!--敗因追加画面-->
-<%= link_to "スコア画面に戻る",game_title_game_score_path(@game_score.game_title.id,@game_score),class:"btn btn-outline-secondary mr-3" %>
+<%= link_to "スコア画面に戻る",game_title_game_score_path(@game_score.game_title.id,@game_score),class:"btn btn-outline-secondary ml-2 mt-2" %>
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
       <h3 class="my-5">敗因一覧</h3>
-      <h6>※1度追加したものは次回からボタンを押すだけで登録できます
+      <h6>※1度追加したものは次回から黄色のボタンを押すだけで登録できます
     </div>
   </div>
   
@@ -20,12 +20,12 @@
         <%= f.hidden_field :status,:value => "lose" %>
         <%= f.hidden_field :title,:value =>reason.title %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
-        <%=f.submit reason.title,class:"btn btn-outline-primary" %>
+        <%=f.submit reason.title,class:"btn btn-warning" %>
       <% end %>
     </div>
     <div class="col-md-4 col-sm-12  my-2">
-      <%= link_to "削除",game_score_reason_path(reason.game_score_id,reason),method: :delete,data: {confirm: "この項目を削除するとグラフからも削除されます。本当に削除しますか？"},class:"btn btn-outline-danger" %>
       <%= link_to "編集",edit_game_score_reason_path(reason.game_score_id,reason.id),class:"btn btn-outline-success"%>
+      <%= link_to "削除",game_score_reason_path(reason.game_score_id,reason),method: :delete,data: {confirm: "この項目を削除するとグラフからも削除されます。本当に削除しますか？"},class:"btn btn-outline-secondary" %>
     </div>
   </div>
     <% end %>
@@ -37,7 +37,7 @@
         <%= f.hidden_field :status,:value =>"lose" %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
         <%= f.text_field :title %>
-        <%=f.submit "追加する",class:"btn btn-outline-success" %>
+        <%=f.submit "追加する",class:"btn btn-success" %>
       <% end %>
     </div>
   </div>
