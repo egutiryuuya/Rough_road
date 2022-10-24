@@ -27,12 +27,9 @@
           <td>
             <%= link_to "詳細を見る",game_title_game_score_path(game_score.game_title_id,game_score),class:"btn btn-outline-success" %>
           </td>
-          <td>
-            <% if current_customer.following?(game_score.customer) && current_customer.name != "guest_user"%>
-              <%= link_to "フォロー外す",customer_relationship_path(game_score.customer_id,current_customer),class:"btn btn-outline-danger", method: :delete %>
-            <% elsif current_customer.name != "guest_user" %>
-              <%= link_to "フォローする", customer_relationships_path(game_score.customer_id),class:"btn btn-outline-danger", method: :post %>
-            <% end %>
+          <% @customer=game_score.customer %>
+          <td class="follow_btn<%=@customer.id %>">
+            <%= render "public/relationships/follow",customer: @customer %>
           </td>
         </tr>
         <% end %>
