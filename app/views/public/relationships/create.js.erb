@@ -1,0 +1,2 @@
+<!--フォロー機能非同期-->
+$('.follow_btn<%= @customer.id %>').html("<%= j(render 'public/relationships/follow',customer: @customer) %>");

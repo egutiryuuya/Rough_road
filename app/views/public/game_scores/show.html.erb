@@ -39,12 +39,8 @@
           <%= render 'public/favorites/favorite',game_score: @game_score %>
         </div>
         
-        <div class="text-center mt-3">
-          <% if current_customer.following?(@game_score.customer)  && current_customer.name != "guest_user" %>
-            <%= link_to "フォロー外す",customer_relationship_path(@game_score.customer_id,current_customer),class:"btn btn-outline-danger", method: :delete %>
-          <% elsif current_customer.name != "guest_user" %>
-            <%= link_to "フォローする", customer_relationships_path(@game_score.customer_id),class:"btn btn-outline-primary", method: :post %>
-          <% end %>
+        <div class="text-center mt-3 follow_btn<%= @customer.id %>">
+          <%= render "public/relationships/follow",customer: @customer %>
         </div>
       <% end %>
       <div class="mt-5">
