@@ -8,21 +8,21 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8 mx-auto bg-dark text-white py-2">
+    <div class="col-md-9 mx-auto bg-dark text-white py-2">
       <h4>勝因一覧</h4>
     </div>
   </div>
   <% @reasons.each do |reason| %>
   <div class="row justify-content-center flex-wrap">
-    <div class="col-sm-4 my-2">
+    <div class="col-sm-4 col-md-6 my-2">
       <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
         <%= f.hidden_field :status,:value => "win" %>
         <%= f.hidden_field :title,:value =>reason.title %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
-        <%=f.submit reason.title,class:"btn btn-warning btn-block col-md-4 col-sm-12" %>
+        <%=f.submit reason.title,class:"btn btn-warning btn-block col-12" %>
       <% end %>
     </div>
-    <div class="col-md-4 col-sm-4  my-2">
+    <div class="col-md-3 col-sm-4  my-2 text-center">
       <%= link_to "編集",edit_game_score_reason_path(reason.game_score_id,reason.id),class:"btn btn-outline-success"%>
       <%= link_to "削除",game_score_reason_path(reason.game_score_id,reason),method: :delete,data: {confirm: "この項目を削除するとグラフからも削除されます。本当に削除しますか？"},class:"btn btn-outline-secondary" %>
     </div>
