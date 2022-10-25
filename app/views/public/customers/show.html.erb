@@ -1,41 +1,42 @@
 <!--ユーザーの詳細ページ-->
 
-<div class="container">
+<div class="container mb-3">
   <div class="row">
     <div class="col-md-4 col-sm-12 mt-5">
+     
 <!--ユーザー情報テンプレート-->
-        <%= render "public/customers/profile",customer: @customer %>
+      <%= render "public/customers/profile",customer: @customer %>
     </div>
     
 <!--ユーザーが遊んでいるタイトル一欄-->
     <div class="col-md-8 col-sm-12 ">
       <h3 class="mt-5">
         <% if @customer.id == current_customer.id %>
-          <h3 class="text-center">あなたが遊んでいるタイトル<h6 class="mb-5 text-center">※画像を押すと戦歴を見ることができます</h6>
+          <h3 class="text-center">あなたが遊んでいるゲーム<h6 class="mb-5 text-center">※画像を押すと戦歴を見ることができます</h6>
         <% else %>
-          <%=@customer.name %>さんが遊んでいるタイトル</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
+          <%=@customer.name %>さんが遊んでいるゲーム</h3><h6 class="mb-5">※画像を押すと戦歴を見ることができます</h6>
         <% end %>
 
-        <div class="row">
+        <div class="row justify-content-center">
           <% @game_scores.each do |game_score| %>
-          <div class="border mx-auto mt-3 title-color">
-            <div class="col-sm-12 pt-2 mb-5 mx-auto ">
-              <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
-                <%= image_tag game_score.game_title.get_game_title_image %>
-              <% end %>
-            <h6><%= game_score.game_title.title %></h6>
+          <div class="border mx-auto mt-3 title-color ">
+          <%= link_to game_title_game_score_path(game_score.game_title_id,game_score) do %>
+            <div class="col-sm-12">
+              <%= image_tag game_score.game_title.get_game_title_image %>
+            <h6 class="text-dark"><%= game_score.game_title.title %></h6>
             </div>
           </div>
           <% end %>
+          
+          <% end %>
         </div>     
-         <% if @customer.game_scores.count==0 %>
+        <% if @customer.game_scores.count==0 %>
             <h4 class="text-center mx-auto">まだタイトルがありません<br>右上のタイトル一覧ボタンを押して好きなタイトルを選びましょう！</h4>
-          <% elsif @customer.game_scores.count>6%>
+        <% elsif @customer.game_scores.count>6%>
             <div class="row col-12 text-center d-flex justify-content-center">
               <div class="col-8 col-sm-12 my-4"><%= paginate @game_scores ,theme: 'bootstrap-5'%></div>
             </div>
-          <% end %>
-          
+        <% end %>
     </div>
   </div>
 </div>

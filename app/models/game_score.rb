@@ -15,4 +15,6 @@ class GameScore < ApplicationRecord
     self.reasons.where(status: "win").count*100/self.reasons.count
     end
   end
+  
+ 
 end

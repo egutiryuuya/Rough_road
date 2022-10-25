@@ -10,53 +10,51 @@
     <div class="col-8 mx-auto mt-2">
   <!--カスタマーで検索をかけた場合-->
       <% if @range == "ユーザー名" %>
-        <table class="table table-borderless">
-          <thead class="table-dark">
-            <th class="text-center">名前</th>
-            <th class="text-center">遊んでいるタイトル数</th>
-            <th></th>
-          </thead>
-          <% @customers.each do |customer| %>
-          <% if customer.name=="guest_user" %>
-            <% else %>
-              <tr>
-                <td class="text-center">
-                  <h4><%=customer.name %></h4>
-                </td>
-                <td class="text-center"><%= customer.game_scores.count %></td>
-                <td><%=link_to "詳細",customer_path(customer),class:"btn btn-outline-success"%></td>
-              </tr>
-           <% end %>
-          <% end %>
-        </table>
+        <div class="row table-dark py-2">
+          <span class="col-4">名前</span>
+          <span class="col-4 text-center">遊んでいるタイトル数</span>
+        </div>
+      
+        <% @customers.each do |customer| %>
+        <% if customer.guest_user? %>
+          <% else %>
+            <div class="row my-2">
+              <div class="col-md-4 col-4">
+                <%=customer.name %>
+              </div>
+              <div class="col-md-4 col-4 text-center"><%= customer.game_scores.count %></div>
+              <div class="col-md-4"><%=link_to "詳細",customer_path(customer),class:" btn btn-outline-success btn-block"%></div>
+            </div>
+         <% end %>
+        <% end %>
+      </div>
+      
         <div class="row col-12 text-center d-flex justify-content-center">
           <div class="col-8 col-sm-12 my-4"><%= paginate @customers ,theme: 'bootstrap-5'%></div>
         </div>
+      
   <!--ゲームタイトルで検索をかけた場合-->
       <% else %>
-        <table class="table table-borderless">
-          <thead class="table-dark">
-            <th class="text-center">タイトル</th>
-            <th colspan="2">遊んでいる人数</th>
-          </thead>
-          <tbody>
+         <div class="row table-dark py-2">
+          <span class="col-4">名前</span>
+          <span class="col-4 text-center">遊んでいる人数</span>
+        </div>
+        
           <% @game_titles.each do |game_title| %>
-          <tr>
-              <td>
-                <h4 class="text-center"><%=game_title.title %></h4>
-              </td>
-              <td class="text-center"><%=game_title.game_scores.count %></td>
-              <td class="text-center"><%= link_to "Let's play",game_title_path(game_title.id),class:"btn btn-outline-success"  %></td>
-          </tr>
+          
+            <div class="row my-2">
+              <div class="col-md-4 col-4">
+                <%=game_title.title %>
+              </div>
+              <div class="col-md-4 col-4 text-center"><%= game_title.game_scores.count %></div>
+              <div class="col-md-4"><%= link_to "Let's play",game_title_path(game_title.id),class:"btn btn-outline-success btn-block" %></div>
+            </div>
           <% end %>
-          </tbody>
-        </table>
         <div class="row col-12 text-center d-flex justify-content-center">
           <div class="col-8 col-sm-12 my-4"><%= paginate @game_titles ,theme: 'bootstrap-5'%></div>
         </div>
       <% end %>
       
-        
     </div>
   </div>
 </div>

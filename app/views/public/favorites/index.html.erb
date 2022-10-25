@@ -1,8 +1,8 @@
 <!--いいねした投稿一覧ページ-->
-<%= link_to "ひとつ前に戻る",:back,class:"btn btn-outline-secondary ml-2 mt-2" %>
+<%= link_to "タイトル一覧に戻る",game_titles_path,class:"btn btn-outline-secondary ml-2 mt-2" %>
 
 <!--ゲストの場合は表示されない-->
-<% if current_customer.name =="guest_user" %>
+<% if current_customer.guest_user? %>
   <div class="container height">
     <div class="row">
       <div class="col-md-8 col-sm-12 mx-auto mt-5">
@@ -19,21 +19,18 @@
       </div>
     </div>
     
+    <div class="col-md-8 row bg-dark text-white py-2  d-flex flex-nowrap mx-auto">
+      <div class="col-md-2 col-sm-2"><h4>名前</h4></div>
+      <div class="col-md-7 col-sm-9 text-center mr-5"><h4>タイトル</h4></div>
+    </div>
     
-      <div class="col-md-8 row bg-dark text-white py-2  d-flex flex-nowrap mx-auto">
-        <div class="col-md-2 col-sm-2"><h4>名前</h4></div>
-        <div class="col-md-7 col-sm-9 text-center mr-5"><h4>タイトル</h4></div>
-        
-      
-      </div>
-    
-      <% @favorites.each do |favorite| %>
-      <div class="row col-md-8 py-2 mx-auto d-flex flex-nowrap">
-        <div class="col-md-2 col-sm-2"><%=favorite.game_score.customer.name %></div>    
-        <div class="col-md-7 col-sm-8 text-center"><%=favorite.game_score.game_title.title %></div>
-        <div class="col-md-3 col-sm-1 text-center"> <%= link_to "詳細",game_title_game_score_path(favorite.game_score.game_title_id,favorite.game_score_id),class:"btn btn-outline-success" %></div>
-      </div>
-      <% end %>
+    <% @favorites.each do |favorite| %>
+    <div class="row col-md-8 py-2 mx-auto d-flex flex-nowrap">
+      <div class="col-md-2 col-sm-2"><%=favorite.game_score.customer.name %></div>    
+      <div class="col-md-7 col-sm-8 text-center"><%=favorite.game_score.game_title.title %></div>
+      <div class="col-md-3 col-sm-1 text-center"> <%= link_to "詳細",game_title_game_score_path(favorite.game_score.game_title_id,favorite.game_score_id),class:"btn btn-outline-success" %></div>
+    </div>
+    <% end %>
   </div>
 <% end %>
 

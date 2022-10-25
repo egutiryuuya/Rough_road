@@ -38,10 +38,6 @@
         <div id="favorite_btn_<%= @game_score.id %>">
           <%= render 'public/favorites/favorite',game_score: @game_score %>
         </div>
-        
-        <div class="text-center mt-3 follow_btn<%= @customer.id %>">
-          <%= render "public/relationships/follow",customer: @customer %>
-        </div>
       <% end %>
       <div class="mt-5">
         <%= render "public/customers/profile",customer: @customer %>

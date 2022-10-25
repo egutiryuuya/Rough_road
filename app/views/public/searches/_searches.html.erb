@@ -1,7 +1,7 @@
 <!--検索結果部分テンプレート-->
 <div class="search_form">
   <%= form_with url: search_path, local: true, method: :get do |f| %>
-    <%=f.text_field :word %>
+    <%=f.text_field :word,placeholder:"テキストを入力",class:"form-group" %>
     <%=f.select :range,options_for_select([['ゲーム名'],['ユーザー名']]) %>
     <%=f.submit "検索",class:"btn btn-sm btn-secondary px-4 py-2 mt-2" %>
   <% end %>

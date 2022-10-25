@@ -18,7 +18,7 @@
 <!--勝率、名前、スコア詳細、フォローへのリンク-->
       <% @game_scores.each do |game_score| %>
         <tr>
-          <% if game_score.customer_id==current_customer.id %>
+          <% if game_score.customer_id == current_customer.id %>
           <% else %>
           <td>
             <%= game_score.customer.name %>

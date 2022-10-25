@@ -5,12 +5,12 @@
         <div><%=image_tag customer.get_customer_image %></div>
       </div>
       <div class= "row">
-        <div class="col-3">名前</div>
+        <div class="col-4">名前:</div>
         <div class="h5 col-8"><%=customer.name %></div>
       </div>
-    <% unless current_customer.name == "guest_user" %>
+    <% unless current_customer.guest_user? %>
       <div class="row">
-        <div class="col-4">自己紹介</div>
+        <div class="col-4">自己紹介:</div>
         <div class="text-break col-8 h5"><%= customer.profile %></div>
       </div>
       <div class="row">
@@ -34,7 +34,11 @@
           <% unless current_customer.name == "guest_user" || customer.id !=current_customer.id%>
           <%= link_to edit_customer_path(current_customer),class:"btn btn-outline-secondary my-3" do %>
             <i class="fa-solid fa-user-pen"></i>ユーザー情報編集
-          <% end %>
+          <% end %>  
+          <% else %>
+            <div class="follow_btn<%= @customer.id %> my-3">
+              <%= render "public/relationships/follow",customer: @customer %>
+            </div>
           <% end %>
         </div>
       </div>

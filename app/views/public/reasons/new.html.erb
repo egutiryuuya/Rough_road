@@ -1,12 +1,12 @@
 <!--勝因追加ページ-->
 <%= link_to "スコア画面に戻る",game_title_game_score_path(@game_score.game_title.id,@game_score),class:"btn btn-outline-secondary ml-2 mt-2" %>
+<% if @reasons.exists? %>
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
-      <h3 class="my-5">勝因一覧ページ</h3>
       <h6>※1度追加したものは次回から黄色のボタンを押すだけで登録できます  </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-8 mx-auto bg-dark text-white py-2">
       <h4>勝因一覧</h4>
@@ -14,12 +14,12 @@
   </div>
   <% @reasons.each do |reason| %>
   <div class="row justify-content-center flex-wrap">
-    <div class="col-md-4 col-sm-4 my-2">
+    <div class="col-sm-4 my-2">
       <%= form_with model:[@game_score,@reason],url:game_score_reasons_path(@game_score),method: :post do |f| %>
         <%= f.hidden_field :status,:value => "win" %>
         <%= f.hidden_field :title,:value =>reason.title %>
         <%= f.hidden_field :game_score_id,:value => @game_score.id %>
-        <%=f.submit reason.title,class:"btn btn-warning" %>
+        <%=f.submit reason.title,class:"btn btn-warning btn-block col-md-4 col-sm-12" %>
       <% end %>
     </div>
     <div class="col-md-4 col-sm-4  my-2">
@@ -28,7 +28,7 @@
     </div>
   </div>
     <% end %>
-
+<% end %>
   <div class="row">
     <div class="col-8 mx-auto">
       <h3> 新規追加はこちら</h3><h6>※1文字以上20文字以内で登録してください</h6>

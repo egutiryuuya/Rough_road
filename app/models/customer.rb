@@ -23,7 +23,7 @@ class Customer < ApplicationRecord
         file_path = Rails.root.join('app/assets/images/noimage.png')
         customer_image.attach(io: File.open(file_path), filename: 'default-image.png',content_type: 'image/png')
       end
-      customer_image.variant(resize_to_limit: [200,200]).processed
+      customer_image.variant(resize_to_fill: [150,150]).processed
     end
     
     def self.looks(word)
@@ -46,5 +46,8 @@ class Customer < ApplicationRecord
     def following?(customer)
       followings.include?(customer)
     end
- 
+    
+    def guest_user?
+      self.name=="guest_user"
+    end
 end
