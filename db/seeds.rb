@@ -14,7 +14,7 @@ Customer.create!(
 
  {email: 'lucas@test.com', name: 'Lucas', password: 'Lucas123'},
  
- {email: 'yoneda@test.com', name: '米田', password: 'Olivia123'},
+ {email: 'yoneda@test.com', name: '米田', password: 'Olivia124'},
 
  {email: 'nemo@test.com', name: '根本', password: 'James124'},
 
