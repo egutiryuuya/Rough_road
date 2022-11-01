@@ -12,6 +12,7 @@ module RoughRoad
     config.load_defaults 6.1
     # 日本語化の設定
     config.i18n.default_locale = :ja
+    config.paths.add 'lib', eager_load: true
     
     # Initialize configuration defaults for originally generated Rails version.
 

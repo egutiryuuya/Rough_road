@@ -20,6 +20,7 @@ Rails.application.routes.draw do
    resources :game_titles
    get "search" => "searches#search"
    get "search/result"=>"searches#search_result"
+   resources :reviews
   end
   
   scope module: :public do 
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings',as: 'followings'
     get 'followers' => 'relationships#followers',as: 'followers'
     end
+    resources :reviews,except:[:edit,:update]
     get "search" => "searches#search"
     get "search/result" => "searches#search_result"
     

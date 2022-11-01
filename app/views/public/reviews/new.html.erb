@@ -1,0 +1,7 @@
+レビューを入力してください
+<%= form_with model: @review,url: reviews_path,method: :post do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :body %>
+  <%= f.hidden_field :customer_id,value: current_customer.id %>
+  <%= f.submit "送信する",class: "btn btn-outline-success" %>
+<% end %>
