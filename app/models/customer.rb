@@ -20,12 +20,12 @@ class Customer < ApplicationRecord
     validates :profile ,length: {maximum: 50 }
     has_one_attached :customer_image
     
-    def get_customer_image
+    def get_customer_image(width,height)
       unless customer_image.attached?
         file_path = Rails.root.join('app/assets/images/noimage.png')
         customer_image.attach(io: File.open(file_path), filename: 'default-image.png',content_type: 'image/png')
       end
-      customer_image.variant(resize_to_fill: [150,150]).processed
+      customer_image.variant(resize_to_fill: [width,height]).processed
     end
     
     def self.looks(word)

@@ -55,6 +55,7 @@
         <li class="nav-item"><%= link_to "タイトル一覧", game_titles_path, class: "mx-3 my-1 btn btn-secondary" %></li>
         <li class="nav-item"><%= link_to "お気に入り", customer_favorites_path(current_customer), class: "mx-3 my-1 btn btn-secondary" %></li>
         <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "mx-3  my-1 btn btn-secondary" %></li>
+        <li class="nav-item"><%= link_to "レビューを見る", reviews_path, class: "mx-3  my-1 btn btn-secondary" %></li>
       </ul>
     
       <% else %>

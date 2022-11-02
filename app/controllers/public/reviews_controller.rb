@@ -10,7 +10,17 @@ class Public::ReviewsController < ApplicationController
       redirect_to reviews_path
     end
   end
+  # 低評価ページ
+  def lowrating 
+    @reviews = Review.all
+  end
   
+  # 高評価ページ
+  def highrating
+    @reviews = Review.all
+  end
+  
+  # 全評価一覧
   def index
     @reviews = Review.all
   end

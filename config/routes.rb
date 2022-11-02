@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers',as: 'followers'
     end
     resources :reviews,except:[:edit,:update]
+    get "lowrating" => 'reviews#lowrating' 
+    get 'highrating' => 'reviews#highrating'
     get "search" => "searches#search"
     get "search/result" => "searches#search_result"
     

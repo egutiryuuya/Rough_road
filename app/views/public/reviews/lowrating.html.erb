@@ -1,21 +1,23 @@
-<h3>全レビュー</h3>
+<h3>低評価</h3>
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
       <div class="row">
-        <div class="col-3 review_btn text-center mx-auto bg-dark"><%= link_to "全評価",reviews_path,class:"text-white text-decoration-none" %></div>
+        <div class="col-3 review_btn text-center mx-auto"><%= link_to "全評価",reviews_path,class:"text-white text-decoration-none" %></div>
         <div class="col-3 review_btn text-center text-white mx-auto"><%= link_to "高評価",highrating_path,class:"text-white text-decoration-none"  %></div>
-        <div class="col-3 review_btn text-center text-white mx-auto"><%= link_to "低評価",lowrating_path,class:"text-white text-decoration-none"  %></div>
+        <div class="col-3 review_btn text-center text-white mx-auto bg-dark"><%= link_to "低評価",lowrating_path,class:"text-white text-decoration-none"  %></div>
       </div>
       <% @reviews.each do |review| %>
-        <div class="row col-8 border mx-auto py-5 my-4">
+        <% if review.score <= -0.3 %>
+          <div class="row col-6 border mx-auto py-5 my-4">
             <div class="col-2">
               <%= image_tag review.customer.get_customer_image(50,50),class:"rounded-circle" %>
             </div>
             <div class="col-10 mt-4"> 
-              <%=review.customer.name %><br><span class="font-weight-bold"><%= review.title%></span><br><%=review.created_at.strftime('%Y/%m/%d %H:%M') %><br><%= review.body %>
+              <%=review.customer.name %><br><%= review.title %><br><%=review.created_at %><br><%= review.body %>
             </div>
           </div>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -85,13 +85,24 @@ body{
   bottom: 5vh; 
 }
 
+.review_btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #6C757D;
+  transition: .4s;
+}
 
-// main{background-color: #f7e6e6;
-//   max-height:  100%;
-//   opacity: 0.8;
-//   background-size: 4px 4px;
-//   background-image: repeating-linear-gradient(45deg, #4af745 0, #4af745 0.4px, #f7e6e6 0, #f7e6e6 50%);
-// }
+.review_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+               6px 0px 15px rgba(255, 255, 240, 0.83);
+}
 
-
-
+.radius_image{
+  border-radius: 50%;
+  
+}
