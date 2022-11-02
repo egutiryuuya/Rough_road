@@ -95,6 +95,7 @@ body{
   padding: 0.3em 0.5em;
   background: #6C757D;
   transition: .4s;
+  border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
 }
 
 .review_btn:hover {
@@ -102,7 +103,3 @@ body{
                6px 0px 15px rgba(255, 255, 240, 0.83);
 }
 
-.radius_image{
-  border-radius: 50%;
-  
-}

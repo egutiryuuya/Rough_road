@@ -20,7 +20,9 @@ Rails.application.routes.draw do
    resources :game_titles
    get "search" => "searches#search"
    get "search/result"=>"searches#search_result"
-   resources :reviews
+   resources :reviews,only:[:edit,:update,:destroy,:index]
+   get "lowrating" => 'reviews#lowrating' 
+    get 'highrating' => 'reviews#highrating'
   end
   
   scope module: :public do 

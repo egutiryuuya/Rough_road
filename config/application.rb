@@ -13,6 +13,7 @@ module RoughRoad
     # 日本語化の設定
     config.i18n.default_locale = :ja
     config.paths.add 'lib', eager_load: true
+    config.time_zone = 'Tokyo'
     
     # Initialize configuration defaults for originally generated Rails version.
 
