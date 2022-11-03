@@ -21,8 +21,8 @@ Rails.application.routes.draw do
    get "search" => "searches#search"
    get "search/result"=>"searches#search_result"
    resources :reviews,only:[:edit,:update,:destroy,:index]
-   get "lowrating" => 'reviews#lowrating' 
-    get 'highrating' => 'reviews#highrating'
+   get "resolved" => 'reviews#resolved' 
+    get 'unsolved' => 'reviews#unsolved'
   end
   
   scope module: :public do 

@@ -1,17 +1,19 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 col-sm-12 mx-auto">
-      <div class="row">
-        <div class="col-12 review_btn text-center my-3"><%= link_to "レビューする",new_review_path,class:"text-white text-decoration-none"%></div>
-      </div>
+      <% unless current_customer.guest_user? %>
+        <div class="row">
+          <div class="col-12 review_btn text-center my-3"><%= link_to "レビューする",new_review_path,class:"text-white text-decoration-none"%></div>
+        </div>
+       <% end %>
       <div class="row">
         <div class="col-3 review_btn text-center mx-auto"><%= link_to "全評価",reviews_path,class:"text-white text-decoration-none" %></div>
         <div class="col-3 review_btn text-center bg-dark mx-auto"><%= link_to "高評価",highrating_path,class:"text-white text-decoration-none"  %></div>
         <div class="col-3 review_btn text-center text-white mx-auto"><%= link_to "低評価",lowrating_path,class:"text-white text-decoration-none"  %></div>
       </div>
       <% @reviews.each do |review| %>
-        <% if review.score >= 0.2 %>
-          <div class="border mx-auto py-2 my-4 px-3">
+        <% if review.score >= 0.1 %>
+          <div class="border mx-auto py-2 my-4 px-3 shadow">
             <div class="row">
               <div class="col-2">
                 <%= image_tag review.customer.get_customer_image(50,50),class:"rounded-circle" %>
@@ -19,15 +21,18 @@
               <div class="col-7"> 
                 <%=review.customer.name %><br><span class="font-weight-bold"><%= review.title%></span><br><%=review.created_at.strftime('%Y/%m/%d %H:%M') %><br><%= review.body %>
               </div>
-            <% if review.customer.id = current_customer.id %>
-              <div class="col-2 text-center">
-                <%= link_to "削除",review_path(review) ,method: :delete,class:" btn btn-outline-danger text-right" %>
-              </div>
-            <% end %>
+          <% if review.customer_id == current_customer.id %>
+            <div class="col-2 text-center">
+              <%= link_to "削除",review_path(review) ,method: :delete,class:" btn btn-outline-danger text-right" %>
+            </div>
+          <% end %>
             </div>
           </div>
         <% end %>
       <% end %>
+      <div class="row col-12 text-center d-flex justify-content-center">
+        <div class="col-8 col-sm-12 my-4"><%= paginate @reviews ,theme: 'bootstrap-5'%></div>
+      </div>
     </div>
   </div>
 </div>

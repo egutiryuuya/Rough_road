@@ -1,6 +1,12 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_customer!
+ 
   def new 
-    @review = Review.new
+    if current_customer.name != "guest_user"
+      @review = Review.new
+    else
+      redirect_to reviews_path
+    end
   end
   
   def create 
@@ -14,17 +20,17 @@ class Public::ReviewsController < ApplicationController
   end
   # 低評価ページ
   def lowrating 
-    @reviews = Review.all
+    @reviews = Review.all.page(params[:page]).per(10)
   end
   
   # 高評価ページ
   def highrating
-    @reviews = Review.all
+    @reviews = Review.all.page(params[:page]).per(10)
   end
   
   # 全評価一覧
   def index
-    @reviews = Review.all
+    @reviews = Review.all.page(params[:page]).per(10)
   end
   
   def destroy 
@@ -34,6 +40,7 @@ class Public::ReviewsController < ApplicationController
   end
   
   private
+
   def review_params
     params.require(:review).permit(:customer_id,:title,:body,:is_settled)
   end

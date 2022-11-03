@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-6 col-sm-12 mx-auto">
       <div class="row">
-        <div class="col-3 review_btn text-center mx-auto bg-dark"><%= link_to "全てのレビュー",admin_reviews_path,class:"text-white text-decoration-none" %></div>
-        <div class="col-4 review_btn text-center text-white mx-auto"><%= link_to "未確認のレビュー",admin_unsolved_path,class:"text-white text-decoration-none"  %></div>
+        <div class="col-3 review_btn text-center mx-auto "><%= link_to "全てのレビュー",admin_reviews_path,class:"text-white text-decoration-none" %></div>
+        <div class="col-4 review_btn text-center text-white mx-auto bg-dark"><%= link_to "未確認のレビュー",admin_unsolved_path,class:"text-white text-decoration-none"  %></div>
         <div class="col-4 review_btn text-center text-white mx-auto"><%= link_to "確認済みのレビュー",admin_resolved_path,class:"text-white text-decoration-none"  %></div>
       </div>
       <% @reviews.each do |review| %>
