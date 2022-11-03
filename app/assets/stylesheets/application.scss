@@ -85,7 +85,7 @@ body{
   bottom: 5vh; 
 }
 
-.review_btn {
+.review_btn,.btn {
   position: relative;
   display: inline-block;
   font-weight: bold;
@@ -99,6 +99,11 @@ body{
 }
 
 .review_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+               6px 0px 15px rgba(255, 255, 240, 0.83);
+}
+
+.btn:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
                6px 0px 15px rgba(255, 255, 240, 0.83);
 }
