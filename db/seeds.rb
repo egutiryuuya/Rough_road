@@ -18,6 +18,7 @@ Customer.create!(
  {email: 'itadori@test.com', name: '虎杖裕司', password: 'Lucas127'},
  {email: 'hushiguro@test.com', name: '伏黒恵', password: 'Lucas128'},
  {email: 'kugisaki@test.com', name: '釘崎', password: 'Lucas129'}
+ {email: 'denji@te.com',name: 'デンジ',password: 'denji0824'
  ]
 )
 
