@@ -1,8 +1,12 @@
-<!--レビュー一覧ページ--.>
+<!--レビュー一覧ページ-->
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 col-sm-12 mx-auto">
       <% unless current_customer.guest_user? %>
+        <div class="row">
+          <div class="col-12 review_btn text-center my-3"><%= link_to "新規タイトルをリクエストする",new_request_path,class:"text-white text-decoration-none"%></div>
+        </div>
+        
         <div class="row">
           <div class="col-12 review_btn text-center my-3"><%= link_to "レビューする",new_review_path,class:"text-white text-decoration-none"%></div>
         </div>

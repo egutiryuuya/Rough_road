@@ -21,17 +21,19 @@ Rails.application.routes.draw do
    get "search" => "searches#search"
    get "search/result"=>"searches#search_result"
    resources :reviews,only:[:edit,:update,:destroy,:index]
+   resources :requests,only:[:index,:destroy]
    get "resolved" => 'reviews#resolved' 
-    get 'unsolved' => 'reviews#unsolved'
+   get 'unsolved' => 'reviews#unsolved'
   end
   
   scope module: :public do 
     resources :customers,only:[:edit,:update,:index,:show] do
-     resources :favorites,only:[:index]
+    resources :favorites,only:[:index]
     resources :relationships, only: [:create, :destroy,:index]
     get 'followings' => 'relationships#followings',as: 'followings'
     get 'followers' => 'relationships#followers',as: 'followers'
     end
+    resources :requests, only: [:new,:create]
     resources :reviews,except:[:edit,:update]
     get "lowrating" => 'reviews#lowrating' 
     get 'highrating' => 'reviews#highrating'
