@@ -7,7 +7,7 @@ class Admin::RequestsController < ApplicationController
   def destroy
     request = Request.find(params[:id])
     request.destroy
-    redirect_to requests_path
+    redirect_to admin_requests_path
   end
   
 end
