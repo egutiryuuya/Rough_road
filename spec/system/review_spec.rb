@@ -17,7 +17,7 @@ end
 
 
 describe "レビュー投稿のテスト" do
-  let!(:list) {create(:review,title:'hoge',body:'body')}
+  let!(:review) {create(:review,title:'hoge',body:'body')}
   describe 'トップ画面のテスト(root_path)' do
     before do 
       visit root_path
