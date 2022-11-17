@@ -41,3 +41,4 @@
 - https://www.irasutoya.com/
 - <a href="https://jp.freepik.com/free-vector/abstract-neon-lights-background-design_9694001.htm#query=game&position=12&from_view=keyword">著作者：pikisuperstar</a>／出典：Freepik
 - favicon https://www.websiteplanet.com/ja/webtools/favicon-generator/
+- https://fontawesome.com/icons?d=gallery
