@@ -1,6 +1,6 @@
 class Public::GameTitlesController < ApplicationController
   def index
-    @game_titles = GameTitle.includes(:game_scores).page(params[:page]).per(6).order('created_at DESC')
+    @game_titles = GameTitle.includes(:image_attachment,:image_blob).page(params[:page]).per(6).order('created_at DESC')
     @customer = current_customer
   end
   

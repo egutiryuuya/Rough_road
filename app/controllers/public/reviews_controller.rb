@@ -20,17 +20,17 @@ class Public::ReviewsController < ApplicationController
   end
   # 低評価ページ
   def lowrating 
-    @reviews = Review.all.page(params[:page]).per(10)
+    @reviews = Review.includes(:customer).page(params[:page]).per(10)
   end
   
   # 高評価ページ
   def highrating
-    @reviews = Review.all.page(params[:page]).per(10)
+    @reviews = Review.includes(:customer).page(params[:page]).per(10)
   end
   
   # 全評価一覧
   def index
-    @reviews = Review.all.page(params[:page]).per(10)
+    @reviews = Review.includes(:customer).page(params[:page]).per(10)
   end
   
   def destroy 

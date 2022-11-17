@@ -10,7 +10,7 @@ class Public::GameScoresController < ApplicationController
   
   def index
     @game_title=GameTitle.find(params[:game_title_id])
-    @game_scores= @game_title.game_scores.all
+    @game_scores= @game_title.game_scores.includes(:customer)
   end
   
   def create
