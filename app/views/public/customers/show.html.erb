@@ -30,6 +30,7 @@
           
           <% end %>
         </div>     
+<!--タイトルがない場合-->
         <% if @customer.game_scores.count==0 %>
             <h4 class="text-center mx-auto">まだタイトルがありません<br>右上のタイトル一覧ボタンを押して好きなタイトルを選びましょう！</h4>
         <% elsif @customer.game_scores.count>6%>

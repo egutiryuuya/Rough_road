@@ -1,5 +1,8 @@
 <!--お気に入り部分テンプレート-->
+
+<!--ゲストの場合表示されない-->
 <% if current_customer.name == "guest_user" %>
+
 
 <% elsif game_score.favorited_by?(current_customer) %>
 
