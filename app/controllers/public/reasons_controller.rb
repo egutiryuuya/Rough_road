@@ -1,6 +1,6 @@
 class Public::ReasonsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :correct_reason,only: [:edit,:new,:lose]
+  before_action :correct_reason,only: [:edit,:new,:lose,:destroy]
 
   def new
     @reason= Reason.new
