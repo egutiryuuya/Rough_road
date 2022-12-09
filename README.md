@@ -37,7 +37,7 @@
 - IDE：Cloud9
 
 ## ER図
-- ![Rough_road_ER drawio](https://user-images.githubusercontent.com/108678727/206676305-07bdaade-b01d-4c39-a5db-d650350311c6.png)
+ ![Rough_road_ER drawio](https://user-images.githubusercontent.com/108678727/206676305-07bdaade-b01d-4c39-a5db-d650350311c6.png)
 
 ## 使用素材
 - ゲームタイトルは管理者側で登録されたものを投稿し著作権フリーの画像を使わせていただいています
